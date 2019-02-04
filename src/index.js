@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { render } from "react-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const App = () => (
+  <div style={{height:'99vh',width:'99vw',display: 'flex', justifyContent:'center', alignItems:'center',flexDirection:'column'}}>
+    <h1>It worked! ;)</h1>
+    <h4>You can create your components inside <span style={{color: 'red'}}>'/src/lib'</span> folder. </h4>
+    <h3>Don't forget to import and export them in the <span style={{color: 'red'}}>'/src/lib/index.js'</span> file before publish it.</h3>
+    <h5>It was made by <span style={{color: 'red'}}>'Redwall Solutions!</span></h5>
+    <p>Thank you.</p>
+  </div>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+render(<App />, document.getElementById("root"));
