@@ -6,7 +6,7 @@ import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 import { asField } from 'informed';
-import { InputStyled, InputIcon } from './Style';
+import { InputStyled, InputIcon, InputError } from './Style';
 import { FormGroup } from './Style';
 
 var Field =
@@ -84,7 +84,7 @@ function (_Component) {
         },
         onFocus: this.onFocus,
         isFocused: this.state.isFocused
-      }))));
+      }))), fieldState.error ? React.createElement(InputError, null, fieldState.error) : null);
     }
   }]);
 
