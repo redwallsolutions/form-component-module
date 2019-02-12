@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {asField} from 'informed';
-import {InputStyled, InputIcon} from './Style';
+import {InputStyled, InputIcon, InputError} from './Style';
 import {FormGroup} from './Style';
 
 class Field extends Component {
@@ -54,6 +54,12 @@ class Field extends Component {
             }
           }} onFocus={this.onFocus} isFocused={this.state.isFocused}/>
       </FormGroup>
+      {
+        fieldState.error
+          ? (<InputError>{fieldState.error}</InputError>)
+          : null
+      }
+
     </React.Fragment>);
   }
 }

@@ -21,6 +21,13 @@ FormGroup.defaultProps = {
   justify: 'center'
 }
 
+
+export const InputError = styled.div `
+  color: ${primaryColor};
+  margin-left: 20px;
+  font-size: 0.9em;
+`;
+
 export const InputStyled = styled.input`
   text-indent: ${props => props.isFocused ? 3 : 3.5}em;
   outline: 0;
