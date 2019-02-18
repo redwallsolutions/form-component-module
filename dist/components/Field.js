@@ -6,7 +6,7 @@ import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 import { asField } from 'informed';
-import { InputStyled, InputIcon, InputError } from './Style';
+import { InputStyled, InputIcon, InputError, Label, FieldFonts } from './Style';
 import { FormGroup } from './Style';
 
 var Field =
@@ -56,12 +56,13 @@ function (_Component) {
           fieldState = _this$props.fieldState,
           fieldApi = _this$props.fieldApi,
           icon = _this$props.icon,
-          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon"]);
+          label = _this$props.label,
+          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label"]);
 
       var value = fieldState.value;
       var setValue = fieldApi.setValue,
           setTouched = fieldApi.setTouched;
-      return React.createElement(React.Fragment, null, React.createElement(FormGroup, null, React.createElement(InputIcon, {
+      return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(FormGroup, null, React.createElement(Label, null, label), React.createElement(InputIcon, {
         isFocused: this.state.isFocused
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {
         ref: forwardedRef,

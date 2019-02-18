@@ -1,6 +1,29 @@
-import styled from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
+import Poppins from '../assets/fonts/Poppins-Regular.ttf';
 
 const primaryColor = '#c1071adb';
+
+export const FieldFonts = createGlobalStyle `
+  @font-face {
+    font-family: Poppins;
+    src: url(${Poppins}), format("TrueType");
+    font-display: fallback;
+  }
+  body {
+    padding: 0;
+    margin: 0;
+    overflow:hidden;
+    font-family: Poppins, sans-serif;
+  }
+`;
+
+export const Label = styled.label `
+  position: absolute;
+  margin-left: -21px;
+  margin-top: -24px;
+  font-size: 0.9em;
+  opacity: .7;
+`;
 
 export const InputIcon = styled.span`
   z-index: 1;

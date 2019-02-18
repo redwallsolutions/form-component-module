@@ -17,8 +17,7 @@ const App = () => (<div style={{
     flexDirection: 'column'
   }}>
   <Form>
-    <Field field='User' placeholder='Digite seu nome' validate={validate} icon={<FaUserAlt/>}/>
-    <Field field='Password' placeholder='Digite sua senha' validate={validate} icon={<FaUserAlt/>}/>
+    <Field field='User' label="Nome" placeholder='Digite seu nome' validate={validate} icon={<FaUserAlt/>}/>
     <br/>
     <button type="submit">
       Submit

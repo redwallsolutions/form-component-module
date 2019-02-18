@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {asField} from 'informed';
-import {InputStyled, InputIcon, InputError} from './Style';
+import {InputStyled, InputIcon, InputError, Label, FieldFonts} from './Style';
 import {FormGroup} from './Style';
 
 class Field extends Component {
@@ -28,12 +28,15 @@ class Field extends Component {
       fieldState,
       fieldApi,
       icon,
+      label,
       ...rest
     } = this.props;
     const {value} = fieldState;
     const {setValue, setTouched} = fieldApi;
     return (<React.Fragment>
+      <FieldFonts/>
       <FormGroup>
+        <Label>{label}</Label>
         <InputIcon isFocused={this.state.isFocused}>
           {icon}
         </InputIcon>
