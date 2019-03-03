@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {asField} from 'informed';
-import {InputStyled, InputIcon, InputError, Label, FieldFonts} from './Style';
-import {FormGroup} from './Style';
+import React, { Component } from 'react';
+import { asField } from 'informed';
+import { InputStyled, InputIcon, InputError, Label, FieldFonts } from './Style';
+import { InputGroup, InputContainer } from './Style';
 
 class Field extends Component {
 
@@ -31,39 +31,49 @@ class Field extends Component {
       label,
       ...rest
     } = this.props;
-    const {value} = fieldState;
-    const {setValue, setTouched} = fieldApi;
-    return (<React.Fragment>
-      <FieldFonts/>
-      <FormGroup>
-        <Label>{label}</Label>
-        <InputIcon isFocused={this.state.isFocused}>
-          {icon}
-        </InputIcon>
-        <InputStyled {...rest} ref={forwardedRef} value={!value && value !== 0
-            ? ''
-            : value
-} onChange={e => {
-            setValue(e.target.value);
-            if (onChange) {
-              onChange(e);
-            }
+    const { value } = fieldState;
+    const { setValue, setTouched } = fieldApi;
+    const isValueEmpty = !value && value !== 0;
+    return (
+      <React.Fragment>
+        <FieldFonts/>
+        <InputContainer>
+          <InputGroup className='input-component-module'>
+            <Label isFocused={this.state.isFocused}>{label}</Label>
+            <InputIcon isFocused={this.state.isFocused}>
+              {icon}
+            </InputIcon>
+            <InputStyled {...rest}
+              ref={forwardedRef}
+              value={
+                isValueEmpty ?
+                  '' :
+                  value
+              }
+              onChange={e => {
+                setValue(e.target.value);
+                if (onChange) {
+                  onChange(e);
+                }
+              }}
+              onBlur={e => {
+                setTouched();
+                this.toggleFocus();
+                if (onBlur) {
+                  onBlur(e);
+                }
+              }}
+              onFocus={this.onFocus}
+              isFocused={this.state.isFocused}/>
+          </InputGroup>
+          {
+            fieldState.error ?
+              (<InputError title={fieldState.error}>{fieldState.error}</InputError>) :
+              null
           }
-} onBlur={e => {
-            setTouched();
-            this.toggleFocus();
-            if (onBlur) {
-              onBlur(e);
-            }
-          }} onFocus={this.onFocus} isFocused={this.state.isFocused}/>
-      </FormGroup>
-      {
-        fieldState.error
-          ? (<InputError>{fieldState.error}</InputError>)
-          : null
-      }
-
-    </React.Fragment>);
+        </InputContainer>
+      </React.Fragment>
+    );
   }
 }
 
