@@ -38,9 +38,9 @@ class Field extends Component {
     return (
       <React.Fragment>
         <FieldFonts/>
-        <InputContainer>
-          <InputGroup className='input-component-module'>
-            <Label isFocused={this.state.isFocused}>{label}</Label>
+        <InputContainer className='input-component-module'>
+          <Label isFocused={this.state.isFocused}>{label}</Label>
+          <InputGroup>
             <InputIcon isFocused={this.state.isFocused}>
               {icon}
             </InputIcon>

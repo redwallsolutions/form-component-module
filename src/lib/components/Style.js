@@ -17,9 +17,8 @@ export const FieldFonts = createGlobalStyle `
 `;
 
 export const Label = styled.label `
-  position: absolute;
-  margin-left: -72px;
-  margin-top: -60px;
+  display: block;
+  margin-left: 79px;
   font-size: 0.9em;
   opacity: .7;
   font-weight: bold;
@@ -41,6 +40,7 @@ export const InputGroup = styled.div`
   justify-content: ${props => props.justify};
   align-items: center;
   margin-bottom: .5em;
+  width: 100%;
 `
 
 InputGroup.defaultProps = {

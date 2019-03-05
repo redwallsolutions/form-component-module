@@ -64,11 +64,11 @@ function (_Component) {
       var setValue = fieldApi.setValue,
           setTouched = fieldApi.setTouched;
       var isValueEmpty = !value && value !== 0;
-      return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, null, React.createElement(InputGroup, {
+      return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
         className: "input-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused
-      }, label), React.createElement(InputIcon, {
+      }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
         isFocused: this.state.isFocused
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {
         ref: forwardedRef,
