@@ -39,7 +39,7 @@ class Field extends Component {
       <React.Fragment>
         <FieldFonts/>
         <InputContainer className='input-component-module'>
-          <Label isFocused={this.state.isFocused}>{label}</Label>
+          <Label isFocused={this.state.isFocused} title={label}>{label}</Label>
           <InputGroup>
             <InputIcon isFocused={this.state.isFocused}>
               {icon}
@@ -48,7 +48,7 @@ class Field extends Component {
               ref={forwardedRef}
               value={
                 isValueEmpty ?
-                  '' :
+                '' :
                   value
               }
               onChange={e => {

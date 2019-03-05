@@ -2,6 +2,7 @@ import styled, {createGlobalStyle} from 'styled-components';
 import Poppins from '../assets/fonts/Poppins-Regular.ttf';
 
 const primaryColor = '#c1071a';
+const errorColor = 'rgb(172, 26, 0)';
 
 export const FieldFonts = createGlobalStyle `
   @font-face {
@@ -14,16 +15,22 @@ export const FieldFonts = createGlobalStyle `
     color: rgb(69,69,69);
     font-family: Poppins, sans-serif;
   }
+
 `;
 
-export const Label = styled.label `
+export const Label = styled.label`
+  position: relative;
   display: block;
-  margin-left: 79px;
+  width: 70%;
+  left: 5em;
   font-size: 0.9em;
   opacity: .7;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   transition: all .5s ease-out;
-  text-shadow: ${props => props.isFocused ? '0 0 20px rgba(83, 83, 83, 0.81)' : 'none'};
+  text-shadow: ${props => props.isFocused ? '0 0 20px rgba(83, 83, 83, 0.4)' : 'none'};
   color: ${props => props.isFocused ? primaryColor : 'rgb(69,69,69)'}
 `;
 
@@ -37,9 +44,7 @@ export const InputIcon = styled.span`
 
 export const InputGroup = styled.div`
   display: flex;
-  justify-content: ${props => props.justify};
   align-items: center;
-  margin-bottom: .5em;
   width: 100%;
 `
 
@@ -48,16 +53,21 @@ InputGroup.defaultProps = {
 }
 
 export const InputError = styled.div `
-  color: ${primaryColor};
-  margin-left: 20px;
+  position: relative;
+  left: 1.3em;
+  color: ${errorColor};
   font-size: 0.9em;
+  font-weight: lighter;
+  margin-top: 3px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 90%;
 `;
 
 export const InputContainer = styled.div`
   width: 280px;
+  margin: 1em;
 `
 export const InputStyled = styled.input`
   text-indent: ${props => props.isFocused ? 3 : 3.5}em;
@@ -72,7 +82,6 @@ export const InputStyled = styled.input`
   line-height: 1.5;
   background-clip: padding-box;
   transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;
-  box-sizing: border-box;
   color: inherit;
   &:focus{
     border-color: ${primaryColor};

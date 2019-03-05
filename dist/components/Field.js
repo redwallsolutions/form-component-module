@@ -67,7 +67,8 @@ function (_Component) {
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
         className: "input-component-module"
       }, React.createElement(Label, {
-        isFocused: this.state.isFocused
+        isFocused: this.state.isFocused,
+        title: label
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
         isFocused: this.state.isFocused
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {

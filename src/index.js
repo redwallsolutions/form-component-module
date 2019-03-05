@@ -15,13 +15,18 @@ const App = () => (<div style={{
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
-  }}>
+}}>
   <Form>
     <Field field='User' label="Nome" placeholder='Digite seu nome' validate={validate} icon={<FaUserAlt/>} afterIcon={
-        <div title="Apenas um teste">
-          <FaInfoCircle/>
-        </div>
-      }/>
+      <div title="Apenas um teste">
+        <FaInfoCircle/>
+      </div>
+    }/>
+    <Field
+      field='Another'
+      label='A very long label for a simple input'
+      placeholder='Say something...'
+      icon={<FaUserAlt/>}/>
     <br/>
     <button type="submit">
       Submit
