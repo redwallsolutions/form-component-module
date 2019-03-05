@@ -7,7 +7,7 @@ import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 import { asField } from 'informed';
 import { InputStyled, InputIcon, InputError, Label, FieldFonts } from './Style';
-import { FormGroup } from './Style';
+import { InputGroup, InputContainer } from './Style';
 
 var Field =
 /*#__PURE__*/
@@ -57,16 +57,22 @@ function (_Component) {
           fieldApi = _this$props.fieldApi,
           icon = _this$props.icon,
           label = _this$props.label,
-          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label"]);
+          afterIcon = _this$props.afterIcon,
+          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon"]);
 
       var value = fieldState.value;
       var setValue = fieldApi.setValue,
           setTouched = fieldApi.setTouched;
-      return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(FormGroup, null, React.createElement(Label, null, label), React.createElement(InputIcon, {
+      var isValueEmpty = !value && value !== 0;
+      return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, null, React.createElement(InputGroup, {
+        className: "input-component-module"
+      }, React.createElement(Label, {
+        isFocused: this.state.isFocused
+      }, label), React.createElement(InputIcon, {
         isFocused: this.state.isFocused
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {
         ref: forwardedRef,
-        value: !value && value !== 0 ? '' : value,
+        value: isValueEmpty ? '' : value,
         onChange: function onChange(e) {
           setValue(e.target.value);
 
@@ -85,7 +91,9 @@ function (_Component) {
         },
         onFocus: this.onFocus,
         isFocused: this.state.isFocused
-      }))), fieldState.error ? React.createElement(InputError, null, fieldState.error) : null);
+      })), afterIcon && React.createElement(InputIcon, null, afterIcon)), fieldState.error ? React.createElement(InputError, {
+        title: fieldState.error
+      }, fieldState.error) : null));
     }
   }]);
 

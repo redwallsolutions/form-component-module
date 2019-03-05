@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from "react-dom";
 import Field from './lib/components/Field';
 import {Form} from 'informed';
-import {FaUserAlt} from 'react-icons/fa';
+import {FaUserAlt, FaInfoCircle} from 'react-icons/fa';
 
 const validate = value => {
   return !value || value.length < 5 ? 'Field must be at least five characters' : undefined;
@@ -17,7 +17,11 @@ const App = () => (<div style={{
     flexDirection: 'column'
   }}>
   <Form>
-    <Field field='User' label="Nome" placeholder='Digite seu nome' validate={validate} icon={<FaUserAlt/>}/>
+    <Field field='User' label="Nome" placeholder='Digite seu nome' validate={validate} icon={<FaUserAlt/>} afterIcon={
+        <div title="Apenas um teste">
+          <FaInfoCircle/>
+        </div>
+      }/>
     <br/>
     <button type="submit">
       Submit

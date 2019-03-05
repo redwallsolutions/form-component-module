@@ -29,6 +29,7 @@ class Field extends Component {
       fieldApi,
       icon,
       label,
+      afterIcon,
       ...rest
     } = this.props;
     const { value } = fieldState;
@@ -65,6 +66,12 @@ class Field extends Component {
               }}
               onFocus={this.onFocus}
               isFocused={this.state.isFocused}/>
+            {
+              afterIcon &&
+              <InputIcon>
+                {afterIcon}
+              </InputIcon>
+            }
           </InputGroup>
           {
             fieldState.error ?
