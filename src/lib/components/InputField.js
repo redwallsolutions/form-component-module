@@ -3,7 +3,7 @@ import { asField } from 'informed';
 import { InputStyled, InputIcon, InputError, Label, FieldFonts } from './Style';
 import { InputGroup, InputContainer } from './Style';
 
-class Field extends Component {
+class InputField extends Component {
 
   state = {
     isFocused: false
@@ -84,4 +84,4 @@ class Field extends Component {
   }
 }
 
-export default asField(Field);
+export default asField(InputField);

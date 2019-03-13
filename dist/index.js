@@ -1,2 +1,3 @@
-import Field from './components/Field';
-export default Field;
+import InputField from './components/InputField';
+import SelectField from './components/SelectField';
+export { InputField, SelectField };

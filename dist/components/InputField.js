@@ -9,23 +9,23 @@ import { asField } from 'informed';
 import { InputStyled, InputIcon, InputError, Label, FieldFonts } from './Style';
 import { InputGroup, InputContainer } from './Style';
 
-var Field =
+var InputField =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Field, _Component);
+  _inherits(InputField, _Component);
 
-  function Field() {
+  function InputField() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Field);
+    _classCallCheck(this, InputField);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Field)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
     _this.state = {
       isFocused: false
     };
@@ -43,7 +43,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Field, [{
+  _createClass(InputField, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -98,7 +98,7 @@ function (_Component) {
     }
   }]);
 
-  return Field;
+  return InputField;
 }(Component);
 
-export default asField(Field);
+export default asField(InputField);

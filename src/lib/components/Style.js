@@ -1,7 +1,7 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import Poppins from '../assets/fonts/Poppins-Regular.ttf';
 
-const primaryColor = '#c1071a';
+export const primaryColor = '#c1071a';
 const errorColor = 'rgb(172, 26, 0)';
 
 export const FieldFonts = createGlobalStyle `
@@ -66,7 +66,7 @@ export const InputError = styled.div `
 `;
 
 export const InputContainer = styled.div`
-  width: 280px;
+  width: 100%;
   margin: 1em;
 `
 export const InputStyled = styled.input`

@@ -11,7 +11,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  width: 280px;\n  margin: 1em;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  margin: 1em;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -72,7 +72,7 @@ function _templateObject() {
 
 import styled, { createGlobalStyle } from 'styled-components';
 import Poppins from '../assets/fonts/Poppins-Regular.ttf';
-var primaryColor = '#c1071a';
+export var primaryColor = '#c1071a';
 var errorColor = 'rgb(172, 26, 0)';
 export var FieldFonts = createGlobalStyle(_templateObject(), Poppins);
 export var Label = styled.label(_templateObject2(), function (props) {
