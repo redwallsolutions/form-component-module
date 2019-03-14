@@ -29,7 +29,7 @@ const App = () => (<div style={{
       placeholder='Say something...'
       icon={<FaUserAlt/>}/>
     <SelectField field='service'/>
-    <SelectField field='product' key='something' label="Serviço" icon={<FaUserAlt/>} options={[{
+    <SelectField field='product' key='something' onChange={(e) => console.log(e)} label="Serviço" icon={<FaUserAlt/>} options={[{
       value: 1, label: 'Alguma Coisa'
     }, {
       value: 2, label: 'Outra Coisa'

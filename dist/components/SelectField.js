@@ -122,6 +122,8 @@ function (_Component) {
             label: label,
             value: value
           });
+
+          _this2.props.onChange(option);
         },
         onBlur: function onBlur(e) {
           setTouched();
