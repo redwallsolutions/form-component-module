@@ -89,12 +89,20 @@ class SelectField extends Component {
                   zIndex: 2
                 }
               },
-              option: (provided, state) => {
-                const {isFocused, isSelected} = state
+              option: (provided, {isFocused,isSelected}) => {
+                const color =
+                (isFocused && 'white')
+                const backgroundColor =
+                (isFocused && subtlePrimaryColor) ||
+                (isSelected && !isFocused && 'rgba(233, 211, 206, 0.7)')
                 return {
                   ...provided,
-                  color: isFocused && 'white',
-                  backgroundColor: isFocused && subtlePrimaryColor
+                  color,
+                  backgroundColor,
+                  ':active': {
+                    backgroundColor: subtlePrimaryColor,
+                    color: 'white'
+                  }
                 }
               }
             }}

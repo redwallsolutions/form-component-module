@@ -123,12 +123,18 @@ function (_Component) {
               zIndex: 2
             });
           },
-          option: function option(provided, state) {
-            var isFocused = state.isFocused,
-                isSelected = state.isSelected;
+          option: function option(provided, _ref) {
+            var isFocused = _ref.isFocused,
+                isSelected = _ref.isSelected;
+            var color = isFocused && 'white';
+            var backgroundColor = isFocused && subtlePrimaryColor || isSelected && !isFocused && 'rgba(233, 211, 206, 0.7)';
             return _objectSpread({}, provided, {
-              color: isFocused && 'white',
-              backgroundColor: isFocused && subtlePrimaryColor
+              color: color,
+              backgroundColor: backgroundColor,
+              ':active': {
+                backgroundColor: subtlePrimaryColor,
+                color: 'white'
+              }
             });
           }
         },
