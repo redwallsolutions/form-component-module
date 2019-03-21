@@ -81,6 +81,12 @@ class SelectField extends Component {
                   ...provided,
                   textIndent
                 }
+              },
+              menu: (provided, state) => {
+                return {
+                  ...provided,
+                  zIndex: 2
+                }
               }
             }}
               onChange={

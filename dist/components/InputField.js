@@ -61,19 +61,22 @@ function (_Component) {
           rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon"]);
 
       var value = fieldState.value;
+      value = value || value === '' ? value : initialValue || '';
       var setValue = fieldApi.setValue,
           setTouched = fieldApi.setTouched;
-      var isValueEmpty = !value && value !== 0;
+      var isFilled = value && value !== '' ? true : false;
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
         className: "input-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused,
+        isFilled: isFilled,
         title: label
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
-        isFocused: this.state.isFocused
+        isFocused: this.state.isFocused,
+        isFilled: isFilled
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {
         ref: forwardedRef,
-        value: isValueEmpty ? '' : value,
+        value: value,
         onChange: function onChange(e) {
           setValue(e.target.value);
 
@@ -91,8 +94,11 @@ function (_Component) {
           }
         },
         onFocus: this.onFocus,
-        isFocused: this.state.isFocused
-      })), afterIcon && React.createElement(InputIcon, null, afterIcon)), fieldState.error ? React.createElement(InputError, {
+        isFocused: this.state.isFocused,
+        isFilled: isFilled
+      })), afterIcon && React.createElement(InputIcon, {
+        isAfterIcon: afterIcon
+      }, afterIcon)), fieldState.error ? React.createElement(InputError, {
         title: fieldState.error
       }, fieldState.error) : null));
     }

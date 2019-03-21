@@ -32,25 +32,22 @@ class InputField extends Component {
       afterIcon,
       ...rest
     } = this.props;
-    const { value } = fieldState;
+    let { value } = fieldState;
+    value = (value || value === '') ? value : (initialValue || '')
     const { setValue, setTouched } = fieldApi;
-    const isValueEmpty = !value && value !== 0;
+    const isFilled = (value && value !== '') ? true : false
     return (
       <React.Fragment>
         <FieldFonts/>
         <InputContainer className='input-component-module'>
-          <Label isFocused={this.state.isFocused} title={label}>{label}</Label>
+          <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
           <InputGroup>
-            <InputIcon isFocused={this.state.isFocused}>
+            <InputIcon isFocused={this.state.isFocused} isFilled={isFilled}>
               {icon}
             </InputIcon>
             <InputStyled {...rest}
               ref={forwardedRef}
-              value={
-                isValueEmpty ?
-                '' :
-                  value
-              }
+              value={value}
               onChange={e => {
                 setValue(e.target.value);
                 if (onChange) {
@@ -65,10 +62,11 @@ class InputField extends Component {
                 }
               }}
               onFocus={this.onFocus}
-              isFocused={this.state.isFocused}/>
+              isFocused={this.state.isFocused}
+              isFilled={isFilled}/>
             {
               afterIcon &&
-              <InputIcon>
+              <InputIcon isAfterIcon={afterIcon}>
                 {afterIcon}
               </InputIcon>
             }

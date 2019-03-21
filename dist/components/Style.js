@@ -1,7 +1,7 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  text-indent: ", "em;\n  outline: 0;\n  padding: 10px;\n  font-size: 15px;\n  background-color: #fff;\n  border:none;\n  border-bottom: 1px solid #eee;\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-clip: padding-box;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: inherit;\n  &:focus{\n    border-color: ", ";\n  }\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n  &:not([value=\"\"]) {\n    border-color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-indent: ", "em;\n  outline: 0;\n  padding: 10px;\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-clip: padding-box;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -11,7 +11,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  margin: 1em;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  margin: 1em 5px;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -31,7 +31,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -41,7 +41,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  z-index: 1;\n  color: ", ";\n  position: relative;\n  left: 2em;\n  transition: box-shadow 0.2s, color 0.2s, transform 0.3s ease-in-out;\n"]);
+  var data = _taggedTemplateLiteral(["\n  z-index: 1;\n  color: ", ";\n  position: absolute;\n  bottom:28%;\n  ", "\n  transition: box-shadow 0.2s, color 0.2s, transform 0.3s ease-in-out;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -51,7 +51,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  display: block;\n  width: 70%;\n  left: 5em;\n  font-size: 0.9em;\n  opacity: .7;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: all .5s ease-out;\n  text-shadow: ", ";\n  color: ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  display: block;\n  width: 70%;\n  left: 3.85em;\n  font-size: 0.9em;\n  opacity: .7;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: all .3s ease-out;\n  text-shadow: ", ";\n  color: ", "\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -73,22 +73,26 @@ function _templateObject() {
 import styled, { createGlobalStyle } from 'styled-components';
 import Poppins from '../assets/fonts/Poppins-Regular.ttf';
 export var primaryColor = '#c1071a';
+export var subtlePrimaryColor = 'rgba(193, 7, 26, 0.77)';
 var errorColor = 'rgb(172, 26, 0)';
 export var FieldFonts = createGlobalStyle(_templateObject(), Poppins);
 export var Label = styled.label(_templateObject2(), function (props) {
-  return props.isFocused ? '0 0 20px rgba(83, 83, 83, 0.4)' : 'none';
+  return props.isFocused || props.isFilled ? '0 0 10px rgba(83, 83, 83, 0.1)' : 'none';
 }, function (props) {
-  return props.isFocused ? primaryColor : 'rgb(69,69,69)';
+  return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor || 'inherit';
 });
 export var InputIcon = styled.span(_templateObject3(), function (props) {
-  return props.isFocused ? primaryColor : 'inherit';
+  return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor || 'inherit';
+}, function (props) {
+  return !props.isAfterIcon ? 'left: 20px;' : 'right: -15%;';
 });
 export var InputGroup = styled.div(_templateObject4());
-InputGroup.defaultProps = {
-  justify: 'center'
-};
 export var InputError = styled.div(_templateObject5(), errorColor);
 export var InputContainer = styled.div(_templateObject6());
 export var InputStyled = styled.input(_templateObject7(), function (props) {
-  return props.isFocused ? 3 : 3.5;
-}, primaryColor, primaryColor, primaryColor);
+  return props.isFocused || props.isFilled ? 3 : 3.5;
+}, function (props) {
+  return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor;
+}, function (props) {
+  return props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit';
+}, primaryColor);

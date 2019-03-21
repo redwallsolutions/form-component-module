@@ -113,6 +113,11 @@ function (_Component) {
             return _objectSpread({}, provided, {
               textIndent: textIndent
             });
+          },
+          menu: function menu(provided, state) {
+            return _objectSpread({}, provided, {
+              zIndex: 2
+            });
           }
         },
         onChange: function onChange(option) {
