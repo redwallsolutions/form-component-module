@@ -110,7 +110,7 @@ class SelectField extends Component {
                 (option)=>{
                   const {label, value} = option;
                   setValue({label,value});
-
+                  this.props.onChange(option);
                 }
               }
               onBlur={e=>{
