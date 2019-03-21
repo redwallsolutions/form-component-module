@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { asField } from 'informed';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor, subtlePrimaryColor } from './Style';
 
 class SelectField extends Component {
 
@@ -34,14 +34,14 @@ class SelectField extends Component {
       afterIcon,
       ...rest
     } = this.props;
-
+    const isFilled = value ? true : false
     return (
       <React.Fragment>
         <FieldFonts/>
-        <InputContainer className='input-component-module'>
-          <Label isFocused={this.state.isFocused} title={label} isSelectFieldLabel>{label}</Label>
+        <InputContainer className='form-component-module'>
+          <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label} isSelectFieldLabel>{label}</Label>
           <InputGroup>
-            <InputIcon isFocused={this.state.isFocused} isSelectFieldIcon>
+            <InputIcon isFocused={this.state.isFocused} isFilled={isFilled} isSelectFieldIcon>
               {icon}
             </InputIcon>
             <Select {...rest} value={value || initialValue || ''} styles={{
@@ -54,6 +54,7 @@ class SelectField extends Component {
                 const borderBottom = !state.isFocused ? '1px solid #eee' : `1px solid ${primaryColor}`;
                 return {
                   ...provided,
+                  backgroundColor: 'transparent',
                   textIndent,
                   border: 'none',
                   borderBottom,
@@ -86,6 +87,14 @@ class SelectField extends Component {
                 return {
                   ...provided,
                   zIndex: 2
+                }
+              },
+              option: (provided, state) => {
+                const {isFocused, isSelected} = state
+                return {
+                  ...provided,
+                  color: isFocused && 'white',
+                  backgroundColor: isFocused && subtlePrimaryColor
                 }
               }
             }}
