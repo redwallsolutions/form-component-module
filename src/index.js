@@ -10,12 +10,13 @@ const validate = value => {
 }
 
 const App = () => (<div style={{
-  width:'300px',
+  width:'500px',
   background: 'rgb(250,250,250)'
 }}>
   <Form>
     <InputField field='totally-empty'/>
     <InputField field='only-placeholder' placeholder="Input with placeholder..."/>
+    <InputField field='error-handling' placeholder="Input with error handling..." label='With Error' validate={validate} validateOnChange/>
     <InputField field='placeholder-and-label' placeholder="Placeholder..." label='A normal label'/>
     <InputField field='placeholder-and-longlabel' placeholder="Placeholder..." label="A very long label that we can't even imagine"/>
     <InputField field='with-icon' placeholder="With icon..." label="With icon" icon={<FaUserAlt/>}/>

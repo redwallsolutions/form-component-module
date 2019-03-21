@@ -66,7 +66,7 @@ function (_Component) {
           setTouched = fieldApi.setTouched;
       var isFilled = value && value !== '' ? true : false;
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
-        className: "input-component-module"
+        className: "form-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused,
         isFilled: isFilled,
@@ -98,9 +98,9 @@ function (_Component) {
         isFilled: isFilled
       })), afterIcon && React.createElement(InputIcon, {
         isAfterIcon: afterIcon
-      }, afterIcon)), fieldState.error ? React.createElement(InputError, {
+      }, afterIcon)), fieldState.error && React.createElement(InputError, {
         title: fieldState.error
-      }, fieldState.error) : null));
+      }, "\u26A0 ", fieldState.error)));
     }
   }]);
 

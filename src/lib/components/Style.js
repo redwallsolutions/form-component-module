@@ -12,9 +12,12 @@ export const FieldFonts = createGlobalStyle `
     font-display: fallback;
   }
 
-  .input-component-module {
+  .form-component-module {
     color: rgb(69,69,69);
     font-family: Poppins, sans-serif;
+  }
+  .form-component-module * {
+    box-sizing: border-box;
   }
 
 `;
@@ -59,12 +62,12 @@ export const InputGroup = styled.div`
 `
 
 export const InputError = styled.div `
-  position: relative;
+  position: absolute;
   left: 1.3em;
   color: ${errorColor};
   font-size: 0.9em;
   font-weight: lighter;
-  margin-top: 3px;
+  margin-top: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

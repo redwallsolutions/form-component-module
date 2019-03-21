@@ -39,7 +39,7 @@ class InputField extends Component {
     return (
       <React.Fragment>
         <FieldFonts/>
-        <InputContainer className='input-component-module'>
+        <InputContainer className='form-component-module'>
           <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
           <InputGroup>
             <InputIcon isFocused={this.state.isFocused} isFilled={isFilled}>
@@ -72,9 +72,8 @@ class InputField extends Component {
             }
           </InputGroup>
           {
-            fieldState.error ?
-              (<InputError title={fieldState.error}>{fieldState.error}</InputError>) :
-              null
+            fieldState.error &&
+            <InputError title={fieldState.error} >&#9888; {fieldState.error}</InputError>
           }
         </InputContainer>
       </React.Fragment>

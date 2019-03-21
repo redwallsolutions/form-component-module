@@ -21,7 +21,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  left: 1.3em;\n  color: ", ";\n  font-size: 0.9em;\n  font-weight: lighter;\n  margin-top: 3px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 90%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  left: 1.3em;\n  color: ", ";\n  font-size: 0.9em;\n  font-weight: lighter;\n  margin-top: 5px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 90%;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -61,7 +61,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Poppins;\n    src: url(", "), format(\"TrueType\");\n    font-display: fallback;\n  }\n\n  .input-component-module {\n    color: rgb(69,69,69);\n    font-family: Poppins, sans-serif;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Poppins;\n    src: url(", "), format(\"TrueType\");\n    font-display: fallback;\n  }\n\n  .form-component-module {\n    color: rgb(69,69,69);\n    font-family: Poppins, sans-serif;\n  }\n  .form-component-module * {\n    box-sizing: border-box;\n  }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
