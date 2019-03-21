@@ -19,6 +19,12 @@ class SelectField extends Component {
     this.toggleFocus();
   }
 
+  onChange = (option) => {
+    if(this.props.onChange) {
+      this.props.onChange(option)
+    }
+  }
+
   render() {
     const {fieldState, fieldApi} = this.props;
     let { value } = fieldState;
@@ -110,7 +116,7 @@ class SelectField extends Component {
                 (option)=>{
                   const {label, value} = option;
                   setValue({label,value});
-                  this.props.onChange(option);
+                  this.onChange(option);
                 }
               }
               onBlur={e=>{
