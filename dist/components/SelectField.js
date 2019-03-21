@@ -8,7 +8,7 @@ import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 import { asField } from 'informed';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor, subtlePrimaryColor } from './Style';
 
 var SelectField =
 /*#__PURE__*/
@@ -67,14 +67,17 @@ function (_Component) {
           afterIcon = _this$props2.afterIcon,
           rest = _objectWithoutProperties(_this$props2, ["onChange", "onBlur", "helperText", "isRequired", "initialValue", "icon", "label", "afterIcon"]);
 
+      var isFilled = value ? true : false;
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
-        className: "input-component-module"
+        className: "form-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused,
+        isFilled: isFilled,
         title: label,
         isSelectFieldLabel: true
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
         isFocused: this.state.isFocused,
+        isFilled: isFilled,
         isSelectFieldIcon: true
       }, icon), React.createElement(Select, Object.assign({}, rest, {
         value: value || initialValue || '',
@@ -88,6 +91,7 @@ function (_Component) {
             var textIndent = state.isFocused ? '1.5em' : '2.5em';
             var borderBottom = !state.isFocused ? '1px solid #eee' : "1px solid ".concat(primaryColor);
             return _objectSpread({}, provided, {
+              backgroundColor: 'transparent',
               textIndent: textIndent,
               border: 'none',
               borderBottom: borderBottom,
@@ -117,6 +121,14 @@ function (_Component) {
           menu: function menu(provided, state) {
             return _objectSpread({}, provided, {
               zIndex: 2
+            });
+          },
+          option: function option(provided, state) {
+            var isFocused = state.isFocused,
+                isSelected = state.isSelected;
+            return _objectSpread({}, provided, {
+              color: isFocused && 'white',
+              backgroundColor: isFocused && subtlePrimaryColor
             });
           }
         },

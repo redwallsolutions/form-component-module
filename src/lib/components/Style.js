@@ -109,3 +109,34 @@ export const InputStyled = styled.input`
     color: ${primaryColor};
   }
 `
+
+export const TextAreaStyled = styled.textarea`
+  outline: 0;
+  padding: 10px;
+  padding-left: calc(10px + 3em);
+  font-size: 15px;
+  border:none;
+  border-bottom: 1px solid #eee;
+  border-color: ${
+    props =>
+      (props.isFocused && primaryColor) ||
+      (props.isFilled && subtlePrimaryColor)
+    };
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  background-color: transparent;
+  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;
+  color: ${
+    props =>
+      props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit'
+  };
+
+  &::placeholder {
+    color: #6c757d;
+    opacity: .5;
+  }
+  &:focus::placeholder {
+    color: ${primaryColor};
+  }
+`

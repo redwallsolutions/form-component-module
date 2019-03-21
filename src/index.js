@@ -3,7 +3,7 @@ import {render} from "react-dom";
 import {Form} from 'informed';
 import {FaUserAlt, FaInfoCircle} from 'react-icons/fa';
 
-import {InputField, SelectField} from './lib'
+import {InputField, SelectField, TextAreaField} from './lib'
 
 const validate = value => {
   return !value || value.length < 5 ? 'Field must be at least five characters' : undefined;
@@ -34,7 +34,10 @@ const App = () => (<div style={{
         value: 2, label: 'Outra Coisa'
     }]}/>
     <SelectField field='service'/>
-
+    <TextAreaField field='area'/>
+    <TextAreaField field='area-with-label' label='I have a label'/>
+    <TextAreaField field='area-with-label-and-placeholder' label='Description' placeholder='I have a awesome placeholder to indicate users what they have to do.'/>
+    <TextAreaField field='area-with-icon' label='Icon' placeholder='I have a awesome icon!!!' icon={<FaUserAlt/>}/>
     <br/>
     <button type="submit">
       Submit

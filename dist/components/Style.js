@@ -1,5 +1,15 @@
 import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n  outline: 0;\n  padding: 10px;\n  padding-left: calc(10px + 3em);\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject7() {
   var data = _taggedTemplateLiteral(["\n  text-indent: ", "em;\n  outline: 0;\n  padding: 10px;\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-clip: padding-box;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
 
@@ -92,6 +102,11 @@ export var InputContainer = styled.div(_templateObject6());
 export var InputStyled = styled.input(_templateObject7(), function (props) {
   return props.isFocused || props.isFilled ? 3 : 3.5;
 }, function (props) {
+  return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor;
+}, function (props) {
+  return props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit';
+}, primaryColor);
+export var TextAreaStyled = styled.textarea(_templateObject8(), function (props) {
   return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor;
 }, function (props) {
   return props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit';
