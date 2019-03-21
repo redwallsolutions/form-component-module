@@ -41,6 +41,12 @@ function (_Component) {
       _this.toggleFocus();
     };
 
+    _this.onChange = function (option) {
+      if (_this.props.onChange) {
+        _this.props.onChange(option);
+      }
+    };
+
     return _this;
   }
 
@@ -146,7 +152,7 @@ function (_Component) {
             value: value
           });
 
-          _this2.props.onChange(option);
+          _this2.onChange(option);
         },
         onBlur: function onBlur(e) {
           setTouched();
