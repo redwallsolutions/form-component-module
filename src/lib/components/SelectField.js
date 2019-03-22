@@ -128,7 +128,7 @@ class SelectField extends Component {
               }}/>
             {
               afterIcon &&
-              <InputIcon>
+              <InputIcon isAfterIcon={afterIcon}>
                 {afterIcon}
               </InputIcon>
             }

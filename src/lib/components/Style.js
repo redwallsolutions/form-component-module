@@ -53,7 +53,7 @@ export const InputIcon = styled.span`
   };
   position: absolute;
   bottom:28%;
-  ${props => !props.isAfterIcon ? 'left: 20px;' : 'right: -12px;'}
+  ${props => !props.isAfterIcon ? 'left: 20px;' : 'right: -24px;'}
   transition: box-shadow 0.2s, color 0.2s, transform 0.3s ease-in-out;
 `
 

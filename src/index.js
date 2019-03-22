@@ -33,6 +33,11 @@ const App = () => (<div style={{
     }, {
         value: 2, label: 'Outra Coisa'
     }]}/>
+    <SelectField field='after' key='something' label="After Icon" icon={<FaUserAlt/>} options={[{
+        value: 1, label: 'Alguma Coisa'
+    }, {
+        value: 2, label: 'Outra Coisa'
+    }]} afterIcon={<FaInfoCircle/>}/>
     <SelectField field='service'/>
     <TextAreaField field='area'/>
     <TextAreaField field='area-with-label' label='I have a label'/>

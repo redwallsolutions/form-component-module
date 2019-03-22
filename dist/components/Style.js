@@ -94,7 +94,7 @@ export var Label = styled.label(_templateObject2(), function (props) {
 export var InputIcon = styled.span(_templateObject3(), function (props) {
   return props.isFocused && primaryColor || props.isFilled && subtlePrimaryColor || 'inherit';
 }, function (props) {
-  return !props.isAfterIcon ? 'left: 20px;' : 'right: -12px;';
+  return !props.isAfterIcon ? 'left: 20px;' : 'right: -24px;';
 });
 export var InputGroup = styled.div(_templateObject4());
 export var InputError = styled.div(_templateObject5(), errorColor);

@@ -162,7 +162,9 @@ function (_Component) {
         onFocus: function onFocus() {
           _this2.toggleFocus();
         }
-      })), afterIcon && React.createElement(InputIcon, null, afterIcon)), fieldState.error && React.createElement(InputError, null, "\u26A0 ", fieldState.error)));
+      })), afterIcon && React.createElement(InputIcon, {
+        isAfterIcon: afterIcon
+      }, afterIcon)), fieldState.error && React.createElement(InputError, null, "\u26A0 ", fieldState.error)));
     }
   }]);
 
