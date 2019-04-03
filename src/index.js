@@ -10,8 +10,7 @@ const validate = value => {
 }
 
 const App = () => (<div style={{
-  width:'500px',
-  background: 'rgb(250,250,250)'
+  width:'500px'
 }}>
   <Form>
     <InputField field='totally-empty'/>
@@ -27,13 +26,19 @@ const App = () => (<div style={{
       label='A very long label for a simple input'
       placeholder='Say something...'
       icon={<FaUserAlt/>}/>
+    <InputField
+      field='mask'
+      label='With mask'
+      placeholder='Qual seu custo? (R$)'
+      icon={<FaUserAlt/>}
+    maskType='moneyMask'/>
     <SelectField field='category'/>
     <SelectField field='product' key='something' label="Serviço" icon={<FaUserAlt/>} options={[{
         value: 1, label: 'Alguma Coisa'
     }, {
         value: 2, label: 'Outra Coisa'
     }]}/>
-    <SelectField field='after' key='something' label="After Icon" icon={<FaUserAlt/>} options={[{
+    <SelectField field='after' key='something2' label="After Icon" icon={<FaUserAlt/>} options={[{
         value: 1, label: 'Alguma Coisa'
     }, {
         value: 2, label: 'Outra Coisa'
