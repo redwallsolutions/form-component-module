@@ -40,12 +40,13 @@ class InputFieldComponent extends Component {
       <React.Fragment>
         <FieldFonts/>
         <InputContainer className='form-component-module'>
-          <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
+          <Label hasIcon={icon} isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
           <InputGroup>
             <InputIcon isFocused={this.state.isFocused} isFilled={isFilled}>
               {icon}
             </InputIcon>
             <InputStyled {...rest}
+              hasIcon={icon}
               ref={forwardedRef}
               value={value}
               onChange={e => {

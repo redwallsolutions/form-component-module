@@ -67,13 +67,16 @@ function (_Component) {
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
         className: "form-component-module"
       }, React.createElement(Label, {
+        hasIcon: icon,
         isFocused: this.state.isFocused,
         isFilled: isFilled,
         title: label
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
         isFocused: this.state.isFocused,
         isFilled: isFilled
-      }, icon), React.createElement(TextAreaStyled, Object.assign({}, rest, {
+      }, icon), React.createElement(TextAreaStyled, Object.assign({
+        hasIcon: icon
+      }, rest, {
         ref: forwardedRef,
         value: value,
         onChange: function onChange(e) {

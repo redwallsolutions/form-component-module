@@ -26,7 +26,7 @@ export const Label = styled.label`
   position: relative;
   display: block;
   width: 70%;
-  left: 3.85em;
+  left: ${props => props.hasIcon ? 3.85 : .72}em;
   font-size: 0.9em;
   opacity: .7;
   font-weight: bold;
@@ -80,6 +80,7 @@ export const InputContainer = styled.div`
 `
 export const InputStyled = styled.input`
   text-indent: ${props => props.isFocused || props.isFilled ? 3 : 3.5}em;
+  ${props => !props.hasIcon && 'text-indent: 0;'}
   outline: 0;
   padding: 10px;
   font-size: 15px;
@@ -113,7 +114,7 @@ export const InputStyled = styled.input`
 export const TextAreaStyled = styled.textarea`
   outline: 0;
   padding: 10px;
-  padding-left: calc(10px + 3em);
+  padding-left: calc(10px${props => props.hasIcon && ' + 3em'});
   font-size: 15px;
   border:none;
   border-bottom: 1px solid #eee;
