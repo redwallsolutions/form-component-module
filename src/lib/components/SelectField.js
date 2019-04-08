@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { asField } from 'informed';
+import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor, subtlePrimaryColor } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled } from './Style';
 
 class SelectField extends Component {
 
@@ -38,39 +39,26 @@ class SelectField extends Component {
       icon,
       label,
       afterIcon,
+      appearance,
+      theme,
       ...rest
     } = this.props;
     const isFilled = value ? true : false
     return (
       <React.Fragment>
         <FieldFonts/>
-        <InputContainer className='form-component-module'>
+        <InputContainer appearance={appearance} className='form-component-module'>
           <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label} isSelectFieldLabel>{label}</Label>
           <InputGroup>
-            <InputIcon isFocused={this.state.isFocused} isFilled={isFilled} isSelectFieldIcon>
+            <InputIcon appearance={appearance} isFocused={this.state.isFocused} isFilled={isFilled} isSelectFieldIcon>
               {icon}
             </InputIcon>
-            <Select {...rest} value={value || initialValue || ''} styles={{
+            <Select {...rest} appearance={appearance} value={value || initialValue || ''} styles={{
               container: (provided, state) => ({
                 ...provided,
                 width: '100%',
               }),
-              control: (provided, state) => {
-                const textIndent = state.isFocused ? '1.5em' : '2.5em';
-                const borderBottom = !state.isFocused ? '1px solid #eee' : `1px solid ${primaryColor}`;
-                return {
-                  ...provided,
-                  backgroundColor: 'transparent',
-                  textIndent,
-                  border: 'none',
-                  borderBottom,
-                  borderRadius: 'none',
-                  boxShadow: 'none',
-                  ':hover': {
-                    borderBottom
-                  }
-                }
-              },
+              control: selectControlStyled({theme,appearance}),
               placeholder: (provided, state) => {
                 const opacity = state.isFocused ? '0' : .5
                 return {
@@ -95,22 +83,7 @@ class SelectField extends Component {
                   zIndex: 2
                 }
               },
-              option: (provided, {isFocused,isSelected}) => {
-                const color =
-                (isFocused && 'white')
-                const backgroundColor =
-                (isFocused && subtlePrimaryColor) ||
-                (isSelected && !isFocused && 'rgba(233, 211, 206, 0.7)')
-                return {
-                  ...provided,
-                  color,
-                  backgroundColor,
-                  ':active': {
-                    backgroundColor: subtlePrimaryColor,
-                    color: 'white'
-                  }
-                }
-              }
+              option: selectOptionStyled({theme, appearance})
             }}
               onChange={
                 (option)=>{
@@ -128,7 +101,7 @@ class SelectField extends Component {
               }}/>
             {
               afterIcon &&
-              <InputIcon isAfterIcon={afterIcon}>
+              <InputIcon appearance={appearance} isAfterIcon={afterIcon}>
                 {afterIcon}
               </InputIcon>
             }
@@ -144,4 +117,9 @@ class SelectField extends Component {
 
 }
 
-export default asField(SelectField);
+SelectField.defaultProps = {
+  appearance: 'primary',
+  theme: {}
+}
+
+export default asField(withTheme(SelectField));

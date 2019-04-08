@@ -28,6 +28,7 @@ class TextAreaField extends Component {
       icon,
       label,
       afterIcon,
+      appearance,
       ...rest
     } = this.props;
     let { value } = fieldState;
@@ -38,12 +39,12 @@ class TextAreaField extends Component {
       <React.Fragment>
         <FieldFonts/>
         <InputContainer className='form-component-module'>
-          <Label hasIcon={icon} isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
+          <Label appearance={appearance} hasIcon={icon} isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
           <InputGroup>
-            <InputIcon isFocused={this.state.isFocused} isFilled={isFilled}>
+            <InputIcon appearance={appearance} isFocused={this.state.isFocused} isFilled={isFilled}>
               {icon}
             </InputIcon>
-            <TextAreaStyled hasIcon={icon} {...rest}
+            <TextAreaStyled appearance={appearance} hasIcon={icon} {...rest}
               ref={forwardedRef}
               value={value}
               onChange={e => {
@@ -64,7 +65,7 @@ class TextAreaField extends Component {
               isFilled={isFilled}/>
             {
               afterIcon &&
-              <InputIcon isAfterIcon={afterIcon}>
+              <InputIcon appearance={appearance} isAfterIcon={afterIcon}>
                 {afterIcon}
               </InputIcon>
             }

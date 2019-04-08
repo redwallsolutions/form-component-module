@@ -57,7 +57,8 @@ function (_Component) {
           icon = _this$props.icon,
           label = _this$props.label,
           afterIcon = _this$props.afterIcon,
-          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon"]);
+          appearance = _this$props.appearance,
+          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon", "appearance"]);
 
       var value = fieldState.value;
       value = value || value === '' ? value : initialValue || '';
@@ -67,14 +68,17 @@ function (_Component) {
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
         className: "form-component-module"
       }, React.createElement(Label, {
+        appearance: appearance,
         hasIcon: icon,
         isFocused: this.state.isFocused,
         isFilled: isFilled,
         title: label
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
+        appearance: appearance,
         isFocused: this.state.isFocused,
         isFilled: isFilled
       }, icon), React.createElement(TextAreaStyled, Object.assign({
+        appearance: appearance,
         hasIcon: icon
       }, rest, {
         ref: forwardedRef,
@@ -99,6 +103,7 @@ function (_Component) {
         isFocused: this.state.isFocused,
         isFilled: isFilled
       })), afterIcon && React.createElement(InputIcon, {
+        appearance: appearance,
         isAfterIcon: afterIcon
       }, afterIcon)), fieldState.error && React.createElement(InputError, {
         title: fieldState.error

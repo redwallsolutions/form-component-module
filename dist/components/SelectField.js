@@ -7,8 +7,9 @@ import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime/helpers/esm/inherits";
 import React, { Component } from 'react';
 import { asField } from 'informed';
+import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, primaryColor, subtlePrimaryColor } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled } from './Style';
 
 var SelectField =
 /*#__PURE__*/
@@ -71,10 +72,13 @@ function (_Component) {
           icon = _this$props2.icon,
           label = _this$props2.label,
           afterIcon = _this$props2.afterIcon,
-          rest = _objectWithoutProperties(_this$props2, ["onChange", "onBlur", "helperText", "isRequired", "initialValue", "icon", "label", "afterIcon"]);
+          appearance = _this$props2.appearance,
+          theme = _this$props2.theme,
+          rest = _objectWithoutProperties(_this$props2, ["onChange", "onBlur", "helperText", "isRequired", "initialValue", "icon", "label", "afterIcon", "appearance", "theme"]);
 
       var isFilled = value ? true : false;
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
+        appearance: appearance,
         className: "form-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused,
@@ -82,10 +86,12 @@ function (_Component) {
         title: label,
         isSelectFieldLabel: true
       }, label), React.createElement(InputGroup, null, React.createElement(InputIcon, {
+        appearance: appearance,
         isFocused: this.state.isFocused,
         isFilled: isFilled,
         isSelectFieldIcon: true
       }, icon), React.createElement(Select, Object.assign({}, rest, {
+        appearance: appearance,
         value: value || initialValue || '',
         styles: {
           container: function container(provided, state) {
@@ -93,21 +99,10 @@ function (_Component) {
               width: '100%'
             });
           },
-          control: function control(provided, state) {
-            var textIndent = state.isFocused ? '1.5em' : '2.5em';
-            var borderBottom = !state.isFocused ? '1px solid #eee' : "1px solid ".concat(primaryColor);
-            return _objectSpread({}, provided, {
-              backgroundColor: 'transparent',
-              textIndent: textIndent,
-              border: 'none',
-              borderBottom: borderBottom,
-              borderRadius: 'none',
-              boxShadow: 'none',
-              ':hover': {
-                borderBottom: borderBottom
-              }
-            });
-          },
+          control: selectControlStyled({
+            theme: theme,
+            appearance: appearance
+          }),
           placeholder: function placeholder(provided, state) {
             var opacity = state.isFocused ? '0' : .5;
             return _objectSpread({}, provided, {
@@ -129,20 +124,10 @@ function (_Component) {
               zIndex: 2
             });
           },
-          option: function option(provided, _ref) {
-            var isFocused = _ref.isFocused,
-                isSelected = _ref.isSelected;
-            var color = isFocused && 'white';
-            var backgroundColor = isFocused && subtlePrimaryColor || isSelected && !isFocused && 'rgba(233, 211, 206, 0.7)';
-            return _objectSpread({}, provided, {
-              color: color,
-              backgroundColor: backgroundColor,
-              ':active': {
-                backgroundColor: subtlePrimaryColor,
-                color: 'white'
-              }
-            });
-          }
+          option: selectOptionStyled({
+            theme: theme,
+            appearance: appearance
+          })
         },
         onChange: function onChange(option) {
           var label = option.label,
@@ -163,6 +148,7 @@ function (_Component) {
           _this2.toggleFocus();
         }
       })), afterIcon && React.createElement(InputIcon, {
+        appearance: appearance,
         isAfterIcon: afterIcon
       }, afterIcon)), fieldState.error && React.createElement(InputError, null, "\u26A0 ", fieldState.error)));
     }
@@ -171,4 +157,8 @@ function (_Component) {
   return SelectField;
 }(Component);
 
-export default asField(SelectField);
+SelectField.defaultProps = {
+  appearance: 'primary',
+  theme: {}
+};
+export default asField(withTheme(SelectField));

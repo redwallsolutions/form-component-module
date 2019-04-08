@@ -184,10 +184,48 @@ const TextAreaStyled = styled.textarea`
     opacity: .5;
   }
   &:focus::placeholder {
-    color: ${primaryColor};
+    color: ${props => theme(props).color};
   }
 `
 
 TextAreaStyled.defaultProps = defaultProps
 
 export {TextAreaStyled}
+
+export const selectControlStyled = (props) => {
+  return (provided, state) => {
+    const textIndent = state.isFocused ? '1.5em' : '2.5em';
+    const borderBottom = !state.isFocused ? '1px solid #eee' : `1px solid ${theme(props).color(props)}`;
+    return {
+      ...provided,
+      backgroundColor: 'transparent',
+      textIndent,
+      border: 'none',
+      borderBottom,
+      borderRadius: 'none',
+      boxShadow: 'none',
+      ':hover': {
+        borderBottom
+      }
+    }
+  }
+}
+
+export const selectOptionStyled = (props) => {
+  return (provided, {isFocused,isSelected}) => {
+    const color =
+    (isFocused && 'white')
+    const backgroundColor =
+    (isFocused && Color(theme(props).color(props)).fade(.2).string()) ||
+    (isSelected && !isFocused && Color(theme(props).color(props)).fade(.9).string())
+    return {
+      ...provided,
+      color,
+      backgroundColor,
+      ':active': {
+        backgroundColor: Color(theme(props).color(props)).darken(.3).string(),
+        color: 'white'
+      }
+    }
+  }
+}

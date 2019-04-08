@@ -202,6 +202,41 @@ var TextAreaStyled = styled.textarea(_templateObject9(), function (props) {
   return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.3).string() : '#eee';
 }, function (props) {
   return props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit';
-}, primaryColor);
+}, function (props) {
+  return theme(props).color;
+});
 TextAreaStyled.defaultProps = defaultProps;
 export { TextAreaStyled };
+export var selectControlStyled = function selectControlStyled(props) {
+  return function (provided, state) {
+    var textIndent = state.isFocused ? '1.5em' : '2.5em';
+    var borderBottom = !state.isFocused ? '1px solid #eee' : "1px solid ".concat(theme(props).color(props));
+    return _objectSpread({}, provided, {
+      backgroundColor: 'transparent',
+      textIndent: textIndent,
+      border: 'none',
+      borderBottom: borderBottom,
+      borderRadius: 'none',
+      boxShadow: 'none',
+      ':hover': {
+        borderBottom: borderBottom
+      }
+    });
+  };
+};
+export var selectOptionStyled = function selectOptionStyled(props) {
+  return function (provided, _ref) {
+    var isFocused = _ref.isFocused,
+        isSelected = _ref.isSelected;
+    var color = isFocused && 'white';
+    var backgroundColor = isFocused && Color(theme(props).color(props)).fade(.2).string() || isSelected && !isFocused && Color(theme(props).color(props)).fade(.9).string();
+    return _objectSpread({}, provided, {
+      color: color,
+      backgroundColor: backgroundColor,
+      ':active': {
+        backgroundColor: Color(theme(props).color(props)).darken(.3).string(),
+        color: 'white'
+      }
+    });
+  };
+};
