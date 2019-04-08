@@ -4,8 +4,6 @@ import theming from 'styled-theming';
 import RedwallColorPallete from 'color-pallete-component-module';
 import Color from 'color';
 
-export const primaryColor = '#c1071a';
-export const subtlePrimaryColor = 'rgba(193, 7, 26, 0.77)';
 const errorColor = 'rgb(172, 26, 0)';
 
 const theme = theming.variants('mode','appearance', {

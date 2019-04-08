@@ -96,8 +96,6 @@ import Poppins from '../assets/fonts/Poppins-Regular.ttf';
 import theming from 'styled-theming';
 import RedwallColorPallete from 'color-pallete-component-module';
 import Color from 'color';
-export var primaryColor = '#c1071a';
-export var subtlePrimaryColor = 'rgba(193, 7, 26, 0.77)';
 var errorColor = 'rgb(172, 26, 0)';
 var theme = theming.variants('mode', 'appearance', {
   primary: {
