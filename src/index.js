@@ -1,10 +1,9 @@
 import React from 'react';
 import {render} from "react-dom";
-import {Form} from 'informed';
 import {FaUserAlt, FaInfoCircle} from 'react-icons/fa';
 import { ThemeProvider } from 'styled-components';
 
-import {InputField, SelectField, TextAreaField} from './lib'
+import {InputField, SelectField, TextAreaField, Form} from './lib'
 
 const validate = value => {
   return !value || value.length < 5 ? 'Field must be at least five characters' : undefined;
