@@ -14,7 +14,7 @@ const theme = theming.variants('mode','appearance', {
     },
     dark: {
       color: props => props.theme.primaryDark || RedwallColorPallete.primaryDark,
-      contrast: props => props.theme.primaryDarkContrast || RedwallColorPallete.primaryDarkContrast
+      contrast: props => props.theme.primaryContrastDark || RedwallColorPallete.primaryContrastDark
     }
   },
   secondary: {
@@ -51,7 +51,7 @@ defaultProps.appearance = 'primary'
 
 
 
-export const FieldFonts = createGlobalStyle `
+const FieldFonts = createGlobalStyle `
   @font-face {
     font-family: Poppins;
     src: url(${Poppins}), format("TrueType");
@@ -59,17 +59,19 @@ export const FieldFonts = createGlobalStyle `
   }
 
   .form-component-module {
-    color: rgb(69,69,69);
     font-family: Poppins, sans-serif;
+    color: ${props => props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.3).string()};
   }
-  .form-component-module * {
-    box-sizing: border-box;
-  }
-
 `;
 
+FieldFonts.defaultProps = defaultProps
+
+export {FieldFonts}
+
+
+
 const colorWhenFocusedOrFilled = css`
-  color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.3).string() : 'inherit'};
+  color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.2).string() : 'inherit'};
 `
 
 const Label = styled.label`
@@ -84,7 +86,7 @@ const Label = styled.label`
   text-overflow: ellipsis;
   white-space: nowrap;
   transition: all .3s ease-out;
-  text-shadow: ${props => props.isFocused || props.isFilled ? '0 0 10px rgba(83, 83, 83, 0.1)' : 'none'};
+  text-shadow: 0 0 2px ${props => props.isFocused || props.isFilled ? Color(theme(props).color(props)).fade(.7).string() : 'transparent'};
   ${colorWhenFocusedOrFilled}
 `;
 
@@ -211,19 +213,45 @@ export const selectControlStyled = (props) => {
 
 export const selectOptionStyled = (props) => {
   return (provided, {isFocused,isSelected}) => {
-    const color =
-    (isFocused && 'white')
+    const color = isFocused ? theme(props).contrast(props) : isSelected ? theme(props).color(props) : theme(props).color(props)
     const backgroundColor =
     (isFocused && Color(theme(props).color(props)).fade(.2).string()) ||
     (isSelected && !isFocused && Color(theme(props).color(props)).fade(.9).string())
     return {
       ...provided,
       color,
-      backgroundColor,
-      ':active': {
-        backgroundColor: Color(theme(props).color(props)).darken(.3).string(),
-        color: 'white'
-      }
+      backgroundColor
+    }
+  }
+}
+
+export const selectSingleValueStyled = (props) => {
+  return (provided, state) => {
+    const color = Color(theme(props).color(props)).grayscale().fade(.2).string()
+    return {
+      ...provided,
+      textIndent: '3em',
+      color
+    }
+  }
+}
+
+export const selectMenuStyled = (props) => {
+  return (provided, {isSelected, isFocused}) => {
+    return {
+      ...provided,
+      zIndex: 2,
+      background: theme(props).contrast(props),
+      boxShadow: '0 0 20px 0 rgba(0,0,0,0.2)'
+    }
+  }
+}
+
+export const selectContainerStyled = (props) => {
+  return (provided, state) => {
+    return {
+      ...provided,
+      width: '100%'
     }
   }
 }

@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import { asField } from 'informed';
 import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled } from './Style';
 
 var SelectField =
 /*#__PURE__*/
@@ -94,11 +94,10 @@ function (_Component) {
         appearance: appearance,
         value: value || initialValue || '',
         styles: {
-          container: function container(provided, state) {
-            return _objectSpread({}, provided, {
-              width: '100%'
-            });
-          },
+          container: selectContainerStyled({
+            theme: theme,
+            appearance: appearance
+          }),
           control: selectControlStyled({
             theme: theme,
             appearance: appearance
@@ -113,17 +112,14 @@ function (_Component) {
               color: '#6c757d'
             });
           },
-          singleValue: function singleValue(provided, state) {
-            var textIndent = '3em';
-            return _objectSpread({}, provided, {
-              textIndent: textIndent
-            });
-          },
-          menu: function menu(provided, state) {
-            return _objectSpread({}, provided, {
-              zIndex: 2
-            });
-          },
+          singleValue: selectSingleValueStyled({
+            theme: theme,
+            appearance: appearance
+          }),
+          menu: selectMenuStyled({
+            theme: theme,
+            appearance: appearance
+          }),
           option: selectOptionStyled({
             theme: theme,
             appearance: appearance
@@ -159,6 +155,8 @@ function (_Component) {
 
 SelectField.defaultProps = {
   appearance: 'primary',
-  theme: {}
+  theme: {
+    mode: 'light'
+  }
 };
 export default asField(withTheme(SelectField));

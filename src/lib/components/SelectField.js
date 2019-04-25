@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { asField } from 'informed';
 import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled } from './Style';
 
 class SelectField extends Component {
 
@@ -54,10 +54,7 @@ class SelectField extends Component {
               {icon}
             </InputIcon>
             <Select {...rest} appearance={appearance} value={value || initialValue || ''} styles={{
-              container: (provided, state) => ({
-                ...provided,
-                width: '100%',
-              }),
+              container: selectContainerStyled({theme, appearance}),
               control: selectControlStyled({theme,appearance}),
               placeholder: (provided, state) => {
                 const opacity = state.isFocused ? '0' : .5
@@ -70,19 +67,8 @@ class SelectField extends Component {
                   color: '#6c757d'
                 }
               },
-              singleValue: (provided, state) => {
-                const textIndent = '3em';
-                return {
-                  ...provided,
-                  textIndent
-                }
-              },
-              menu: (provided, state) => {
-                return {
-                  ...provided,
-                  zIndex: 2
-                }
-              },
+              singleValue: selectSingleValueStyled({theme, appearance}),
+              menu: selectMenuStyled({theme, appearance}),
               option: selectOptionStyled({theme, appearance})
             }}
               onChange={
@@ -119,7 +105,9 @@ class SelectField extends Component {
 
 SelectField.defaultProps = {
   appearance: 'primary',
-  theme: {}
+  theme: {
+    mode: 'light'
+  }
 }
 
 export default asField(withTheme(SelectField));

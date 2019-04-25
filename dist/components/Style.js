@@ -62,7 +62,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  display: block;\n  width: 70%;\n  left: ", "em;\n  font-size: 0.9em;\n  opacity: .7;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: all .3s ease-out;\n  text-shadow: ", ";\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  display: block;\n  width: 70%;\n  left: ", "em;\n  font-size: 0.9em;\n  opacity: .7;\n  font-weight: bold;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  transition: all .3s ease-out;\n  text-shadow: 0 0 2px ", ";\n  ", "\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -82,7 +82,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Poppins;\n    src: url(", "), format(\"TrueType\");\n    font-display: fallback;\n  }\n\n  .form-component-module {\n    color: rgb(69,69,69);\n    font-family: Poppins, sans-serif;\n  }\n  .form-component-module * {\n    box-sizing: border-box;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Poppins;\n    src: url(", "), format(\"TrueType\");\n    font-display: fallback;\n  }\n\n  .form-component-module {\n    font-family: Poppins, sans-serif;\n    color: ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -112,7 +112,7 @@ var theme = theming.variants('mode', 'appearance', {
         return props.theme.primaryDark || RedwallColorPallete.primaryDark;
       },
       contrast: function contrast(props) {
-        return props.theme.primaryDarkContrast || RedwallColorPallete.primaryDarkContrast;
+        return props.theme.primaryContrastDark || RedwallColorPallete.primaryContrastDark;
       }
     }
   },
@@ -162,14 +162,18 @@ var defaultTheme = {
 var defaultProps = _objectSpread({}, defaultTheme);
 
 defaultProps.appearance = 'primary';
-export var FieldFonts = createGlobalStyle(_templateObject(), Poppins);
+var FieldFonts = createGlobalStyle(_templateObject(), Poppins, function (props) {
+  return props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.3).string();
+});
+FieldFonts.defaultProps = defaultProps;
+export { FieldFonts };
 var colorWhenFocusedOrFilled = css(_templateObject2(), function (props) {
-  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.3).string() : 'inherit';
+  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.2).string() : 'inherit';
 });
 var Label = styled.label(_templateObject3(), function (props) {
   return props.hasIcon ? 3.85 : .72;
 }, function (props) {
-  return props.isFocused || props.isFilled ? '0 0 10px rgba(83, 83, 83, 0.1)' : 'none';
+  return props.isFocused || props.isFilled ? Color(theme(props).color(props)).fade(.7).string() : 'transparent';
 }, colorWhenFocusedOrFilled);
 Label.defaultProps = defaultProps;
 export { Label };
@@ -226,15 +230,38 @@ export var selectOptionStyled = function selectOptionStyled(props) {
   return function (provided, _ref) {
     var isFocused = _ref.isFocused,
         isSelected = _ref.isSelected;
-    var color = isFocused && 'white';
+    var color = isFocused ? theme(props).contrast(props) : isSelected ? theme(props).color(props) : theme(props).color(props);
     var backgroundColor = isFocused && Color(theme(props).color(props)).fade(.2).string() || isSelected && !isFocused && Color(theme(props).color(props)).fade(.9).string();
     return _objectSpread({}, provided, {
       color: color,
-      backgroundColor: backgroundColor,
-      ':active': {
-        backgroundColor: Color(theme(props).color(props)).darken(.3).string(),
-        color: 'white'
-      }
+      backgroundColor: backgroundColor
+    });
+  };
+};
+export var selectSingleValueStyled = function selectSingleValueStyled(props) {
+  return function (provided, state) {
+    var color = Color(theme(props).color(props)).grayscale().fade(.2).string();
+    return _objectSpread({}, provided, {
+      textIndent: '3em',
+      color: color
+    });
+  };
+};
+export var selectMenuStyled = function selectMenuStyled(props) {
+  return function (provided, _ref2) {
+    var isSelected = _ref2.isSelected,
+        isFocused = _ref2.isFocused;
+    return _objectSpread({}, provided, {
+      zIndex: 2,
+      background: theme(props).contrast(props),
+      boxShadow: '0 0 20px 0 rgba(0,0,0,0.2)'
+    });
+  };
+};
+export var selectContainerStyled = function selectContainerStyled(props) {
+  return function (provided, state) {
+    return _objectSpread({}, provided, {
+      width: '100%'
     });
   };
 };
