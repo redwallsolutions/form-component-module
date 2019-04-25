@@ -52,7 +52,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  z-index: 1;\n  position: absolute;\n  bottom:28%;\n  ", "\n  transition: box-shadow 0.2s, color 0.2s, transform 0.3s ease-in-out;\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  z-index: 1;\n  position: absolute;\n  bottom:28%;\n  ", "\n  transition: .2s ease-in-out;\n  ", "\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -163,12 +163,12 @@ var defaultProps = _objectSpread({}, defaultTheme);
 
 defaultProps.appearance = 'primary';
 var FieldFonts = createGlobalStyle(_templateObject(), Poppins, function (props) {
-  return props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.3).string();
+  return props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.2).string();
 });
 FieldFonts.defaultProps = defaultProps;
 export { FieldFonts };
 var colorWhenFocusedOrFilled = css(_templateObject2(), function (props) {
-  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.2).string() : 'inherit';
+  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).fade(.2).string() : 'inherit';
 });
 var Label = styled.label(_templateObject3(), function (props) {
   return props.hasIcon ? 3.85 : .72;
@@ -190,9 +190,9 @@ var InputStyled = styled.input(_templateObject8(), function (props) {
 }, function (props) {
   return !props.hasIcon && 'text-indent: 0;';
 }, function (props) {
-  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.3).string() : '#eee';
+  return props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).fade(.7).string() : Color(theme(props).color(props)).grayscale().fade(.8).string();
 }, function (props) {
-  return props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit';
+  return props.isFocused ? props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).grayscale().fade(.2).string() : props.isFilled ? Color(theme(props).color(props)).grayscale().fade(.3).string() : 'inherit';
 }, function (props) {
   return theme(props).color;
 });

@@ -60,7 +60,7 @@ const FieldFonts = createGlobalStyle `
 
   .form-component-module {
     font-family: Poppins, sans-serif;
-    color: ${props => props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.3).string()};
+    color: ${props => props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.2).string()};
   }
 `;
 
@@ -71,7 +71,7 @@ export {FieldFonts}
 
 
 const colorWhenFocusedOrFilled = css`
-  color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.2).string() : 'inherit'};
+  color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).fade(.2).string() : 'inherit'};
 `
 
 const Label = styled.label`
@@ -99,7 +99,7 @@ const InputIcon = styled.span`
   position: absolute;
   bottom:28%;
   ${props => !props.isAfterIcon ? 'left: 20px;' : 'right: -24px;'}
-  transition: box-shadow 0.2s, color 0.2s, transform 0.3s ease-in-out;
+  transition: .2s ease-in-out;
   ${colorWhenFocusedOrFilled}
 `
 
@@ -136,17 +136,14 @@ const InputStyled = styled.input`
   font-size: 15px;
   border:none;
   border-bottom: 1px solid #eee;
-  border-color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).darken(.3).string() : '#eee'};
+  border-color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).fade(.7).string() : Color(theme(props).color(props)).grayscale().fade(.8).string()};
   display: block;
   width: 100%;
   line-height: 1.5;
   background-clip: padding-box;
   background-color: transparent;
   transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;
-  color: ${
-    props =>
-      props.isFilled && !props.isFocused ? 'rgb(100,100,100)' : 'inherit'
-  };
+  color: ${props => props.isFocused ? (props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).grayscale().fade(.2).string()) : props.isFilled ? Color(theme(props).color(props)).grayscale().fade(.3).string() : 'inherit'};
 
   &::placeholder {
     color: #6c757d;
