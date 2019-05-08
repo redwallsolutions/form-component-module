@@ -1,5 +1,5 @@
-import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 import _objectSpread from "@babel/runtime/helpers/esm/objectSpread";
+import _taggedTemplateLiteral from "@babel/runtime/helpers/esm/taggedTemplateLiteral";
 
 function _templateObject9() {
   var data = _taggedTemplateLiteral(["\n  outline: 0;\n  padding: 10px;\n  padding-left: calc(10px", ");\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
@@ -22,7 +22,7 @@ function _templateObject8() {
 }
 
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  margin: 1em 5px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  margin: ", ";\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -32,7 +32,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  left: 1.3em;\n  color: ", ";\n  font-size: 0.9em;\n  font-weight: lighter;\n  margin-top: 5px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 90%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: absolute;\n  left: 1.3em;\n  color: red;\n  font-size: 0.9em;\n  font-weight: lighter;\n  margin-top: 5px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  max-width: 90%;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -82,7 +82,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  @font-face {\n    font-family: Poppins;\n    src: url(", "), format(\"TrueType\");\n    font-display: fallback;\n  }\n\n  .form-component-module {\n    font-family: Poppins, sans-serif;\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  .form-component-module {\n    font-family: Arial, Helvetica, Tahoma, Geneva, sans-serif;\n    color: ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -92,78 +92,17 @@ function _templateObject() {
 }
 
 import styled, { createGlobalStyle, css } from 'styled-components';
-import Poppins from '../assets/fonts/Poppins-Regular.ttf';
-import theming from 'styled-theming';
-import RedwallColorPallete from 'color-pallete-component-module';
 import Color from 'color';
-var errorColor = 'rgb(172, 26, 0)';
-var theme = theming.variants('mode', 'appearance', {
-  primary: {
-    light: {
-      color: function color(props) {
-        return props.theme.primary || RedwallColorPallete.primary;
-      },
-      contrast: function contrast(props) {
-        return props.theme.primaryContrast || RedwallColorPallete.primaryContrast;
-      }
-    },
-    dark: {
-      color: function color(props) {
-        return props.theme.primaryDark || RedwallColorPallete.primaryDark;
-      },
-      contrast: function contrast(props) {
-        return props.theme.primaryContrastDark || RedwallColorPallete.primaryContrastDark;
-      }
-    }
-  },
-  secondary: {
-    light: {
-      color: function color(props) {
-        return props.theme.secondary || RedwallColorPallete.secondary;
-      },
-      contrast: function contrast(props) {
-        return props.theme.secondaryContrast || RedwallColorPallete.secondaryContrast;
-      }
-    },
-    dark: {
-      color: function color(props) {
-        return props.theme.secondaryDark || RedwallColorPallete.secondaryDark;
-      },
-      contrast: function contrast(props) {
-        return props.theme.secondaryDarkContrast || RedwallColorPallete.secondaryDarkContrast;
-      }
-    }
-  },
-  default: {
-    light: {
-      color: function color(props) {
-        return props.theme.default || RedwallColorPallete.neutral;
-      },
-      contrast: function contrast(props) {
-        return props.theme.defaultContrast || RedwallColorPallete.neutralContrast;
-      }
-    },
-    dark: {
-      color: function color(props) {
-        return props.theme.defaultDark || RedwallColorPallete.neutralDark;
-      },
-      contrast: function contrast(props) {
-        return props.theme.defaultDarkContrast || RedwallColorPallete.neutralDarkContrast;
-      }
-    }
-  }
-});
-var defaultTheme = {
+import Theming from 'theming-component-module';
+var theme = Theming.createThemeWithAppearance();
+var defaultProps = {
   theme: {
     mode: 'light'
-  }
+  },
+  appearance: 'default'
 };
-
-var defaultProps = _objectSpread({}, defaultTheme);
-
-defaultProps.appearance = 'primary';
-var FieldFonts = createGlobalStyle(_templateObject(), Poppins, function (props) {
-  return props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.2).string();
+var FieldFonts = createGlobalStyle(_templateObject(), function (props) {
+  return Color(theme(props).color(props)).grayscale().string();
 });
 FieldFonts.defaultProps = defaultProps;
 export { FieldFonts };
@@ -183,8 +122,10 @@ var InputIcon = styled.span(_templateObject4(), function (props) {
 InputIcon.defaultProps = _objectSpread({}, defaultProps);
 export { InputIcon };
 export var InputGroup = styled.div(_templateObject5());
-export var InputError = styled.div(_templateObject6(), errorColor);
-export var InputContainer = styled.div(_templateObject7());
+export var InputError = styled.div(_templateObject6());
+export var InputContainer = styled.div(_templateObject7(), function (props) {
+  return props.type === 'hidden' ? 0 : '1em 5px';
+});
 var InputStyled = styled.input(_templateObject8(), function (props) {
   return props.isFocused || props.isFilled ? 3 : 3.5;
 }, function (props) {
@@ -259,9 +200,16 @@ export var selectMenuStyled = function selectMenuStyled(props) {
   };
 };
 export var selectContainerStyled = function selectContainerStyled(props) {
-  return function (provided, state) {
+  return function (provided) {
     return _objectSpread({}, provided, {
       width: '100%'
+    });
+  };
+};
+export var selectInputStyled = function selectInputStyled(props) {
+  return function (provided) {
+    return _objectSpread({}, provided, {
+      color: Color(theme(props).color(props)).grayscale().fade(.2).string()
     });
   };
 };

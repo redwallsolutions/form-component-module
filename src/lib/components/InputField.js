@@ -2,10 +2,19 @@ import React from 'react';
 import * as utils from '../utils';
 import InputFieldComponent from './InputFieldComponent';
 
-export default props => {
-  const {maskType, mask, ...rest} = props
-  const defaultMask = value => value
-  return (
-    <InputFieldComponent mask={mask || utils[maskType] || defaultMask} {...rest}/>
-  )
+
+class InputField extends React.Component {
+  render() {
+    const {maskType, mask, ...rest} = this.props
+    const defaultMask = value => value
+    return (
+      <InputFieldComponent mask={mask || utils[maskType] || defaultMask} {...rest}/>
+    )
+  }
 }
+
+InputField.defaultProps = {
+  appearance: 'default'
+}
+
+export default InputField;

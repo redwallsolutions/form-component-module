@@ -59,7 +59,8 @@ function (_Component) {
           label = _this$props.label,
           afterIcon = _this$props.afterIcon,
           appearance = _this$props.appearance,
-          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon", "appearance"]);
+          type = _this$props.type,
+          rest = _objectWithoutProperties(_this$props, ["onChange", "onBlur", "initialValue", "forwardedRef", "fieldState", "fieldApi", "icon", "label", "afterIcon", "appearance", "type"]);
 
       var value = fieldState.value;
       value = value || value === '' ? value : initialValue || '';
@@ -67,7 +68,8 @@ function (_Component) {
           setTouched = fieldApi.setTouched;
       var isFilled = value && value !== '' ? true : false;
       return React.createElement(React.Fragment, null, React.createElement(FieldFonts, null), React.createElement(InputContainer, {
-        className: "form-component-module"
+        className: "form-component-module",
+        type: type
       }, React.createElement(Label, {
         appearance: appearance,
         hasIcon: icon,
@@ -79,6 +81,7 @@ function (_Component) {
         isFocused: this.state.isFocused,
         isFilled: isFilled
       }, icon), React.createElement(InputStyled, Object.assign({}, rest, {
+        type: type,
         appearance: appearance,
         hasIcon: icon,
         ref: forwardedRef,

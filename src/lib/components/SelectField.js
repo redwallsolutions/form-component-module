@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { asField } from 'informed';
 import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup,
+  selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled, selectInputStyled } from './Style';
 
 class SelectField extends Component {
 
@@ -69,7 +70,8 @@ class SelectField extends Component {
               },
               singleValue: selectSingleValueStyled({theme, appearance}),
               menu: selectMenuStyled({theme, appearance}),
-              option: selectOptionStyled({theme, appearance})
+              option: selectOptionStyled({theme, appearance}),
+              input: selectInputStyled({theme, appearance})
             }}
               onChange={
                 (option)=>{
@@ -104,7 +106,7 @@ class SelectField extends Component {
 }
 
 SelectField.defaultProps = {
-  appearance: 'primary',
+  appearance: 'default',
   theme: {
     mode: 'light'
   }

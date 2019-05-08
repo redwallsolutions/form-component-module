@@ -1,74 +1,26 @@
 import styled, {createGlobalStyle, css} from 'styled-components';
-import Poppins from '../assets/fonts/Poppins-Regular.ttf';
-import theming from 'styled-theming';
-import RedwallColorPallete from 'color-pallete-component-module';
 import Color from 'color';
+import Theming from 'theming-component-module';
 
-const errorColor = 'rgb(172, 26, 0)';
+const theme = Theming.createThemeWithAppearance()
 
-const theme = theming.variants('mode','appearance', {
-  primary: {
-    light: {
-      color: props => props.theme.primary || RedwallColorPallete.primary,
-      contrast: props => props.theme.primaryContrast || RedwallColorPallete.primaryContrast
-    },
-    dark: {
-      color: props => props.theme.primaryDark || RedwallColorPallete.primaryDark,
-      contrast: props => props.theme.primaryContrastDark || RedwallColorPallete.primaryContrastDark
-    }
-  },
-  secondary: {
-    light: {
-      color: props => props.theme.secondary || RedwallColorPallete.secondary,
-      contrast: props => props.theme.secondaryContrast || RedwallColorPallete.secondaryContrast
-    },
-    dark: {
-      color: props => props.theme.secondaryDark || RedwallColorPallete.secondaryDark,
-      contrast: props => props.theme.secondaryDarkContrast || RedwallColorPallete.secondaryDarkContrast
-    }
-  },
-  default: {
-    light: {
-      color: props => props.theme.default || RedwallColorPallete.neutral,
-      contrast: props => props.theme.defaultContrast || RedwallColorPallete.neutralContrast
-    },
-    dark: {
-      color: props => props.theme.defaultDark || RedwallColorPallete.neutralDark,
-      contrast: props => props.theme.defaultDarkContrast || RedwallColorPallete.neutralDarkContrast
-    }
-  }
-})
-
-const defaultTheme = {
+const defaultProps = {
   theme: {
     mode: 'light'
-  }
+  },
+  appearance: 'default'
 }
 
-const defaultProps = {...defaultTheme}
-defaultProps.appearance = 'primary'
-
-
-
-
-const FieldFonts = createGlobalStyle `
-  @font-face {
-    font-family: Poppins;
-    src: url(${Poppins}), format("TrueType");
-    font-display: fallback;
-  }
-
+const FieldFonts = createGlobalStyle`
   .form-component-module {
-    font-family: Poppins, sans-serif;
-    color: ${props => props.theme.mode === 'light' ? Color(theme(props).color(props)).grayscale().string() : Color(theme(props).color(props)).darken(.2).string()};
+    font-family: Arial, Helvetica, Tahoma, Geneva, sans-serif;
+    color: ${props => Color(theme(props).color(props)).grayscale().string()};
   }
 `;
 
 FieldFonts.defaultProps = defaultProps
 
 export {FieldFonts}
-
-
 
 const colorWhenFocusedOrFilled = css`
   color: ${props => props.isFocused ? theme(props).color : props.isFilled ? Color(theme(props).color(props)).fade(.2).string() : 'inherit'};
@@ -114,7 +66,7 @@ export const InputGroup = styled.div`
 export const InputError = styled.div `
   position: absolute;
   left: 1.3em;
-  color: ${errorColor};
+  color: red;
   font-size: 0.9em;
   font-weight: lighter;
   margin-top: 5px;
@@ -126,7 +78,7 @@ export const InputError = styled.div `
 
 export const InputContainer = styled.div`
   width: 100%;
-  margin: 1em 5px;
+  margin: ${props=> props.type === 'hidden' ? 0 : '1em 5px'};
 `
 const InputStyled = styled.input`
   text-indent: ${props => props.isFocused || props.isFilled ? 3 : 3.5}em;
@@ -245,10 +197,19 @@ export const selectMenuStyled = (props) => {
 }
 
 export const selectContainerStyled = (props) => {
-  return (provided, state) => {
+  return (provided) => {
     return {
       ...provided,
       width: '100%'
+    }
+  }
+}
+
+export const selectInputStyled = (props) => {
+  return (provided) => {
+    return {
+      ...provided,
+      color: Color(theme(props).color(props)).grayscale().fade(.2).string()
     }
   }
 }

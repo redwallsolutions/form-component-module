@@ -31,6 +31,7 @@ class InputFieldComponent extends Component {
       label,
       afterIcon,
       appearance,
+      type,
       ...rest
     } = this.props;
     let { value } = fieldState;
@@ -40,13 +41,14 @@ class InputFieldComponent extends Component {
     return (
       <React.Fragment>
         <FieldFonts/>
-        <InputContainer className='form-component-module'>
+        <InputContainer className='form-component-module' type={type}>
           <Label appearance={appearance} hasIcon={icon} isFocused={this.state.isFocused} isFilled={isFilled} title={label}>{label}</Label>
           <InputGroup>
             <InputIcon appearance={appearance} isFocused={this.state.isFocused} isFilled={isFilled}>
               {icon}
             </InputIcon>
             <InputStyled {...rest}
+              type={type}
               appearance={appearance}
               hasIcon={icon}
               ref={forwardedRef}

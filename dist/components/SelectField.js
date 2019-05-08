@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import { asField } from 'informed';
 import { withTheme } from 'styled-components';
 import Select from 'react-select';
-import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled } from './Style';
+import { InputContainer, InputError, FieldFonts, Label, InputIcon, InputGroup, selectControlStyled, selectOptionStyled, selectContainerStyled, selectSingleValueStyled, selectMenuStyled, selectInputStyled } from './Style';
 
 var SelectField =
 /*#__PURE__*/
@@ -123,6 +123,10 @@ function (_Component) {
           option: selectOptionStyled({
             theme: theme,
             appearance: appearance
+          }),
+          input: selectInputStyled({
+            theme: theme,
+            appearance: appearance
           })
         },
         onChange: function onChange(option) {
@@ -154,7 +158,7 @@ function (_Component) {
 }(Component);
 
 SelectField.defaultProps = {
-  appearance: 'primary',
+  appearance: 'default',
   theme: {
     mode: 'light'
   }

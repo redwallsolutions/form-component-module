@@ -29,6 +29,7 @@ class App extends React.Component {
         <ThemeProvider theme={{mode: this.state.mode, primaryContrastDark: '#2b324c', primaryDark: '#ebebeb'}}>
           <Form>
             <button onClick={this.toggleMode} type='button'>Toggle Mode</button>
+            <InputField type='hidden' initialValue={1} field='hidden'/>
             <InputField field='totally-empty'/>
             <InputField field='only-placeholder' placeholder="Input with placeholder..."/>
             <InputField field='error-handling' placeholder="Input with error handling..." label='With Error' validate={validate} validateOnChange/>
@@ -54,7 +55,7 @@ class App extends React.Component {
             }, {
                 value: 2, label: 'Outra Coisa'
             }]}/>
-            <SelectField field='after' key='something2' label="After Icon" icon={<FaUserAlt/>} options={[{
+            <SelectField appearance='primary' field='after' key='something2' label="After Icon" icon={<FaUserAlt/>} options={[{
                 value: 1, label: 'Alguma Coisa'
             }, {
                 value: 2, label: 'Outra Coisa'
