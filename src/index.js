@@ -44,11 +44,17 @@ class App extends React.Component {
               placeholder='Say something...'
               icon={<FaUserAlt/>}/>
             <InputField
-              field='mask'
-              label='With mask'
+              field='money'
+              label='With Money Mask'
               placeholder='Qual seu custo? (R$)'
               icon={<FaUserAlt/>}
             maskType='moneyMask'/>
+            <InputField
+              field='percent'
+              label='With Percent Mask'
+              placeholder='Qual a porcentagem? (%)'
+              icon={<FaUserAlt/>}
+            maskType='percentMask'/>
             <SelectField field='category'/>
             <SelectField field='product' key='something' label="Serviço" icon={<FaUserAlt/>} options={[{
                 value: 1, label: 'Alguma Coisa'
