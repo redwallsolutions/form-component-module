@@ -82,6 +82,7 @@ function (_Component) {
         className: "form-component-module"
       }, React.createElement(Label, {
         isFocused: this.state.isFocused,
+        hasIcon: icon,
         isFilled: isFilled,
         title: label,
         isSelectFieldLabel: true

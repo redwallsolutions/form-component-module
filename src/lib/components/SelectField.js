@@ -49,7 +49,7 @@ class SelectField extends Component {
       <React.Fragment>
         <FieldFonts/>
         <InputContainer appearance={appearance} className='form-component-module'>
-          <Label isFocused={this.state.isFocused} isFilled={isFilled} title={label} isSelectFieldLabel>{label}</Label>
+          <Label isFocused={this.state.isFocused} hasIcon={icon} isFilled={isFilled} title={label} isSelectFieldLabel>{label}</Label>
           <InputGroup>
             <InputIcon appearance={appearance} isFocused={this.state.isFocused} isFilled={isFilled} isSelectFieldIcon>
               {icon}

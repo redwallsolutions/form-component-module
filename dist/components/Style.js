@@ -12,7 +12,7 @@ function _templateObject9() {
 }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  text-indent: ", "em;\n  ", "\n  outline: 0;\n  padding: 10px;\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-clip: padding-box;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-indent: ", "em;\n  ", "\n  outline: 0;\n  padding: 7px 10px;\n  font-size: 15px;\n  border:none;\n  border-bottom: 1px solid #eee;\n  border-color: ", ";\n  display: block;\n  width: 100%;\n  line-height: 1.5;\n  background-clip: padding-box;\n  background-color: transparent;\n  transition: border-color 0.15s ease-out, text-indent, 0.2s ease-in-out;\n  color: ", ";\n\n  &::placeholder {\n    color: #6c757d;\n    opacity: .5;\n  }\n  &:focus::placeholder {\n    color: ", ";\n  }\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;

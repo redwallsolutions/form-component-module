@@ -66,6 +66,10 @@ class App extends React.Component {
             <TextAreaField field='area-with-label-and-placeholder' label='Description' placeholder='I have a awesome placeholder to indicate users what they have to do.'/>
             <TextAreaField field='area-with-icon' label='Icon' placeholder='I have a awesome icon!!!' icon={<FaUserAlt/>}/>
             <br/>
+            <div style={{display: 'flex'}}>
+              <InputField label='Same height' field='sameheight'/>
+              <SelectField label='Same height' field='sameheight-select'/>
+            </div>
             <button type="submit">
               Submit
             </button>

@@ -84,7 +84,7 @@ const InputStyled = styled.input`
   text-indent: ${props => props.isFocused || props.isFilled ? 3 : 3.5}em;
   ${props => !props.hasIcon && 'text-indent: 0;'}
   outline: 0;
-  padding: 10px;
+  padding: 7px 10px;
   font-size: 15px;
   border:none;
   border-bottom: 1px solid #eee;
