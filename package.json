@@ -1,6 +1,6 @@
 {
   "name": "form-component-module",
-  "version": "1.8.4",
+  "version": "1.9.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -30,6 +30,7 @@
   ],
   "dependencies": {
     "informed": "^1.10.12",
+    "numeral": "^2.0.6",
     "react-icons": "^3.3.0",
     "react-select": "^2.4.2",
     "styled-components": "^4.1.3",
