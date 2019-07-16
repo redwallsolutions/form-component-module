@@ -56,7 +56,7 @@ class InputFieldComponent extends Component {
               onChange={e => {
                 setValue(e.target.value);
                 if (onChange) {
-                  onChange(e);
+                  onChange({event:e, value: e.target.value});
                 }
               }}
               onBlur={e => {

@@ -90,7 +90,10 @@ function (_Component) {
           setValue(e.target.value);
 
           if (_onChange) {
-            _onChange(e);
+            _onChange({
+              event: e,
+              value: e.target.value
+            });
           }
         },
         onBlur: function onBlur(e) {
