@@ -27,3 +27,17 @@ export const percentMask = (value) => {
 
   return newValue
 }
+
+export const celMask = (value) => {
+  let newValue = value.replace(/[^\d]/g, '')
+  const celSize = newValue.length
+  if(celSize > 11) newValue = newValue.slice(1)
+  if(celSize > 7) {
+    newValue = `(${newValue.slice(0,2)}) ${newValue.slice(2, 7)}-${newValue.slice(7)}`
+  } else if(celSize > 2) {
+    newValue = `(${newValue.slice(0,2)}) ${newValue.slice(2)}`
+  } else if(celSize > 0) {
+    newValue = `(${newValue.slice(0)}`
+  }
+  return newValue
+}

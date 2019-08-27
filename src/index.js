@@ -50,6 +50,12 @@ class App extends React.Component {
               icon={<FaUserAlt/>}
             maskType='moneyMask'/>
             <InputField
+              field='cel'
+              label='With Cel Mask'
+              placeholder='Qual o celular?'
+              icon={<FaUserAlt/>}
+            maskType='celMask'/>
+            <InputField
               field='percent'
               label='With Percent Mask'
               placeholder='Qual a porcentagem? (%)'

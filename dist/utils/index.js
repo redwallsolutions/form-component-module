@@ -24,3 +24,18 @@ export var percentMask = function percentMask(value) {
 
   return newValue;
 };
+export var celMask = function celMask(value) {
+  var newValue = value.replace(/[^\d]/g, '');
+  var celSize = newValue.length;
+  if (celSize > 11) newValue = newValue.slice(1);
+
+  if (celSize > 7) {
+    newValue = "(".concat(newValue.slice(0, 2), ") ").concat(newValue.slice(2, 7), "-").concat(newValue.slice(7));
+  } else if (celSize > 2) {
+    newValue = "(".concat(newValue.slice(0, 2), ") ").concat(newValue.slice(2));
+  } else if (celSize > 0) {
+    newValue = "(".concat(newValue.slice(0));
+  }
+
+  return newValue;
+};
