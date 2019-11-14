@@ -1,6 +1,6 @@
 {
   "name": "@redwallsolutions/form-component-module",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "dist/index.d.ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
     "build": "rimraf dist && tsc",
-    "publish": "yarn build && npm publish"
+    "release": "yarn build && npm publish"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
