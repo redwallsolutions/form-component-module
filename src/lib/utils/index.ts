@@ -3,7 +3,7 @@ import 'numeral/locales';
 numeral.locale('pt-br')
 numeral.defaultFormat('$0,0.00')
 
-export const moneyMask = (value) => {
+const money = (value:string) => {
   let newValue = value.replace(/[a-zA-Z\$,*\.]/g, '')
   if((/^(\d\.?\d?)+(,[0-9]+)?$/g).test(newValue)) {
     newValue = value.replace(',', '')
@@ -15,7 +15,7 @@ export const moneyMask = (value) => {
   return newValue
 }
 
-export const percentMask = (value) => {
+const percent = (value:string) => {
   let newValue = value.replace(/[a-zA-Z%]/g, '')
   if((/^([0-9]+)(,[0-9]+)?/g).test(newValue)){
     newValue = newValue.replace(',', '')
@@ -28,7 +28,7 @@ export const percentMask = (value) => {
   return newValue
 }
 
-export const celMask = (value) => {
+const cel = (value:string) => {
   let newValue = value.replace(/[^\d]/g, '')
   const celSize = newValue.length
   if(celSize > 11) newValue = newValue.slice(1)
@@ -41,3 +41,12 @@ export const celMask = (value) => {
   }
   return newValue
 }
+
+const _default = (value:any) => value
+
+export default {
+	money,
+	percent,
+  cel,
+  default: _default
+} as any

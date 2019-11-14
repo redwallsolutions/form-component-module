@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "es2015"],
+		"esModuleInterop": true,
+		"strict": true,
+		"jsx": "react",
+		"declaration": true,
+		"rootDir": "./src/lib",
+		"outDir": "./dist",
+		"removeComments": false
+	},
+	"exclude": ["src/*.tsx"]
+}
