@@ -25,7 +25,7 @@ const App = () => {
 	}
 
 	return (
-		<Form getApi={getApi} onSubmit={onSubmit}>
+		<Form getApi={getApi} onSubmit={onSubmit} allowEmptyStrings={true}>
 			<div>
 				<Reset theme={{ mode }} />
 				<InputField

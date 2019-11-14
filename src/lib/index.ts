@@ -1,3 +1,3 @@
 import InputField from './components/InputField'
-import { Form } from 'informed'
+import Form from './components/FormWrapper'
 export { InputField, Form }

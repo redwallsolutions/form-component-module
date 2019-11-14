@@ -97,7 +97,6 @@ const Field: FC<
 					{label}
 				</LabelText>
 				<InputText
-					// mask={(value:any) => value.toUpperCase()}
 					ref={ref}
 					value={value as any}
 					onFocus={onFocusInner}
