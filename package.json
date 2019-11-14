@@ -1,15 +1,20 @@
 {
-  "name": "form-component-module",
+  "name": "@redwallsolutions/form-component-module",
   "version": "2.0.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "type": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "license": "MIT",
   "scripts": {
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "publish": "yarn build && npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
