@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "start": "rimraf demo/output && parcel demo/index.html -d demo/output --open",
-    "test": "jest",
+    "test": "echo \"No test specified.\"",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "build": "rimraf dist && tsc",
