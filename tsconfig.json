@@ -10,5 +10,5 @@
 		"outDir": "./dist",
 		"removeComments": false
 	},
-	"exclude": ["src/*.tsx"]
+	"exclude": ["src/*.tsx", "src/**/*.test.ts", "src/docs/*"]
 }
