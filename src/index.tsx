@@ -1,107 +1,111 @@
-import React, { useState } from 'react'
+import React, { FC, FormEvent, useState } from 'react'
 import { render } from 'react-dom'
-
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
 import { InputField, Form } from './lib'
-import { createGlobalStyle } from 'styled-components'
-import { ICommonProps, ITheme } from '@redwallsolutions/common-interfaces-ts'
+import { IAppearance } from '@redwallsolutions/common-interfaces-ts'
 
-const Reset = createGlobalStyle<ICommonProps>`
-  body {
-    background-color: ${props =>
-			props.theme.mode === 'light' ? 'white' : 'rgba(20, 20, 20)'};
-    padding: 2em;
-    margin: 0;
-  }
+const theming = createThemeWithAppearance()
+
+const Reset = createGlobalStyle<any>`
+    body {
+		font-family: Arial, Helvetica, Geneva, Tahoma, sans-serif;
+        padding: 0;
+        margin: 0;
+        background-color: ${props => theming(props).contrast};
+        color: ${props => theming(props).color};
+        &, * {
+            box-sizing: border-box;
+            transition: .3s;
+        }
+    }
 `
 
-const App = () => {
-	const [mode, setMode] = useState('light')
-	const getApi = api => {
-		console.log('oi', api)
-	}
+Reset.defaultProps = {
+	appearance: 'default'
+} as any
 
-	const onSubmit = params => {
-		console.log(params)
+const Container = styled.div`
+	height: 100vw;
+	padding: 10px;
+	margin: 0;
+`
+
+const InputsContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`
+
+const InputItem = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin: 0 2em;
+`
+
+const App: FC = () => {
+	const [themeMode, setThemeMode] = useState('light')
+	const [appearance, setAppearance] = useState('default')
+	const [visible, setVisible] = useState(false)
+
+	const onChange = (event: FormEvent) => {
+		let currentTarget = event.currentTarget
+		let inputName = currentTarget.attributes.getNamedItem('name').nodeValue
+		if (inputName === 'mode') {
+			setThemeMode(currentTarget.id)
+		} else {
+			setAppearance(currentTarget.id)
+		}
 	}
 
 	return (
-		<Form getApi={getApi} onSubmit={onSubmit} allowEmptyStrings={true}>
-			<div>
-				<Reset theme={{ mode }} />
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="default"
-					label="A default input"
-					field="default"
-				/>
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="default"
-					label="Inside that label there is a soooooooooo long text."
-					field="long"
-				/>
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="primary"
-					label="A primary input"
-					field="primary"
-				/>
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="secondary"
-					label="A secondary input"
-					field="secondary"
-				/>
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="primary"
-					label="A password type input"
-					type="password"
-					field="password"
-				/>
-				<InputField
-					theme={{ mode, default: '#497799', defaultDark: '#497799' } as ITheme}
-					appearance="default"
-					label="Custom color"
-					field="customColor"
-				/>
-				<InputField
-					theme={{ mode, default: 'orange', defaultDark: 'orange' } as ITheme}
-					appearance="default"
-					label="Custom color 2"
-					field="cc2"
-				/>
-				<InputField
-					theme={{ mode } as ITheme}
-					appearance="default"
-					label="A initial value"
-					initialValue="This is a initial value"
-					field="initial"
-				/>
-				<InputField
-					theme={{ mode, primary: 'green' } as ITheme}
-					appearance="primary"
-					label="Money"
-					maskType="money"
-					field="money"
-				/>
-				<InputField
-					theme={{ mode, primary: 'blue' } as ITheme}
-					appearance="primary"
-					label="Percentage"
-					maskType="percent"
-					field="percent"
-				/>
-				<InputField
-					theme={{ mode, primary: 'purple' } as ITheme}
-					appearance="primary"
-					label="Cel number"
-					maskType="cel"
-					field="cel"
-				/>
-				<button type="submit">Send</button>
-			</div>
-		</Form>
+		<ThemeProvider theme={{ mode: themeMode }}>
+			<Container>
+				<Reset appearance={appearance} />
+				<InputsContainer>
+					<InputItem>
+						<label htmlFor="light">Mode Light</label>
+						<input type="radio" id="light" onChange={onChange} name="mode" />
+					</InputItem>
+					<InputItem>
+						<label htmlFor="dark">Mode Dark</label>
+						<input type="radio" id="dark" onChange={onChange} name="mode" />
+					</InputItem>
+					<InputItem>
+						<label htmlFor="default">Appearance Default</label>
+						<input
+							type="radio"
+							id="default"
+							onChange={onChange}
+							name="appearance"
+						/>
+					</InputItem>
+					<InputItem>
+						<label htmlFor="primary">Appearance Primary</label>
+						<input
+							type="radio"
+							id="primary"
+							onChange={onChange}
+							name="appearance"
+						/>
+					</InputItem>
+					<InputItem>
+						<label htmlFor="secondary">Appearance Secondary</label>
+						<input
+							type="radio"
+							id="secondary"
+							onChange={onChange}
+							name="appearance"
+						/>
+					</InputItem>
+				</InputsContainer>
+				<div style={{ marginTop: '2em' }}>
+					<Form>
+						<InputField label="Something" field="something" appearance={appearance as IAppearance}/>
+					</Form>
+				</div>
+			</Container>
+		</ThemeProvider>
 	)
 }
 

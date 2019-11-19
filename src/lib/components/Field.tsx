@@ -4,12 +4,14 @@ import React, {
 	FC,
 	InputHTMLAttributes,
 	MouseEvent,
-	FocusEvent
+	FocusEvent,
+	useContext
 } from 'react'
 import { Container, Reset, InputText, LabelText, TraillingIcon } from './Style'
 import { useField } from 'informed'
 import { IInputElement, IInputElementStyled } from './intefaces'
 import { OpenedEyes, ClosedEyes } from '../assets/Icons'
+import { ThemeContext } from 'styled-components'
 
 const TogglePassword: FC<any> = ({ onClick }) => {
 	const [opened, setOpened] = useState(true)
@@ -71,7 +73,7 @@ const Field: FC<
 	const onToggleShowPassword = () => {
 		setTypeAttr(typeAttr === 'password' ? 'text' : 'password')
 	}
-
+	const themeToApply = useContext(ThemeContext) || theme
 	const { fieldState, fieldApi, ref } = useField({field, mask, initialValue})
 	const { setValue, setTouched } = fieldApi
 	let { value } = fieldState
@@ -84,13 +86,13 @@ const Field: FC<
 				shouldFitContainer={shouldFitContainer}
 				isFocused={isFocused}
 				isFilled={isFilled}
-				theme={theme}
+				theme={themeToApply}
 				appearance={appearance}
 			>
 				<LabelText
 					isFocused={isFocused}
 					isFilled={isFilled}
-					theme={theme}
+					theme={themeToApply}
 					appearance={appearance}
 					title={label}
 				>
@@ -102,13 +104,13 @@ const Field: FC<
 					onFocus={onFocusInner}
 					onBlur={onBlurInner}
 					onChange={onChangeInner}
-					theme={theme}
+					theme={themeToApply}
 					appearance={appearance}
 					type={typeAttr}
 				/>
 
 				{(type === 'password' || trailling) && (
-					<TraillingIcon theme={theme} appearance={appearance}>
+					<TraillingIcon theme={themeToApply} appearance={appearance}>
 						{type === 'password' ? (
 							<TogglePassword onClick={onToggleShowPassword} />
 						) : (

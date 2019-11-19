@@ -1,22 +1,16 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
-import {
-	IInputElementInteraction,
-	IInputElementStyled
-} from './intefaces'
+import { IInputElementInteraction, IInputElementStyled } from './intefaces'
 import Color from 'color'
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
 const theming = createThemeWithAppearance()
 
-const csscolor = css`
-	${props =>
-		Color(theming(props).color(props))
-			.grayscale()
-			.lighten(props.theme.mode === 'light' ? 0 : 0.8)
-			.darken(props.theme.mode === 'dark' ? 0 : 0.5)
-			.toString()};
-`
+const isFilledOrFocused = (props: IInputElementInteraction) =>
+	props.isFilled || props.isFocused
+
+const isLight = (props: ICommonProps) =>
+	props.theme && props.theme.mode === 'light'
 
 export const Reset = createGlobalStyle`
   .form-component-module {
@@ -24,7 +18,7 @@ export const Reset = createGlobalStyle`
     height: auto;
     font-family: Arial, Helvetica, Geneva, Tahoma, sans-serif;
     &, & * {
-      transition: .3s;
+      transition: .2s;
       box-sizing: border-box;
     }
   }
@@ -38,17 +32,22 @@ export const Container = styled.div<
 	width: ${props => (props.shouldFitContainer ? '100%' : '280px')};
 	height: 56px;
 	border-radius: 4px;
-	box-shadow: 0 0 0 ${props => (props.isFocused || props.isFilled ? 2 : 1)}px
+	box-shadow: 0 0 0 ${props => (isFilledOrFocused(props) ? 2 : 1)}px
 		${props =>
-			props.isFocused || props.isFilled ? theming(props).color(props) : 'grey'};
-	transition-duration: 0.5s;
+			isFilledOrFocused(props) ? theming(props).color(props) : 'grey'};
+	transition: none;
+	background-color: ${props =>
+		Color(theming(props).contrast(props))
+			.lighten(0.4)
+			.toString()};
 	&:hover {
 		${props =>
 			!props.isFocused &&
 			!props.isFilled &&
-			`box-shadow: 0 0 0 1px ${Color(theming(props).color(props)).grayscale().toString()}`}
+			`box-shadow: 0 0 0 1px ${Color(theming(props).color(props))
+				.grayscale()
+				.toString()}`}
 	}
-	margin: 10px;
 `
 
 export const LeadingIcon = styled.i``
@@ -56,19 +55,23 @@ export const LeadingIcon = styled.i``
 export const LabelText = styled.label<IInputElementInteraction>`
 	position: absolute;
 	left: 12px;
-	top: ${props =>
-		props.isFocused || props.isFilled ? '10%' : 'calc(50% - 9.5px)'};
+	text-align: left;
+	top: calc(50% - 9.5px);
 	z-index: 0;
-	color: ${props =>
+	transform: ${props =>
 		props.isFocused || props.isFilled
-			? Color(theming(props).color(props))
-					.alpha(0.85)
-					.toString()
-			: props.theme.mode === 'light'
-			? 'rgba(100,100,100)'
-			: 'rgba(200,200,200, 0.4)'};
-	transition-timing-function: cubic-bezier(0.38, 0.86, 0.05, 1);
-	font-size: ${props => (props.isFocused || props.isFilled ? 12 : 14)}px;
+			? 'translateY(-75%) scale(.85)'
+			: 'translateY(0) scale(1)'};
+	transform-origin: left;
+	will-change: transform;
+	color: ${props =>
+		isFilledOrFocused(props)
+			? theming(props).color
+			: Color(theming(props).color(props))
+					.grayscale()
+					.toString()};
+	transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1),
+		color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 	max-width: 94%;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -85,11 +88,10 @@ export const InputText = styled.input<ICommonProps>`
 	font-size: 16px;
 	box-shadow: none;
 	border: none;
-	border-radius: 4px;
 	z-index: 1;
 	background: transparent;
-	color: ${csscolor};
-	&:focus{
+	color: ${props => (isLight(props) ? 'rgb(100,100,100)' : 'rgb(200,200,200)')};
+	&:focus {
 		outline: 0;
 	}
 `
@@ -102,8 +104,10 @@ export const TraillingIcon = styled.i<ICommonProps>`
 	height: 24px;
 	cursor: pointer;
 	z-index: 2;
-	color: ${csscolor} svg {
-		fill: ${csscolor};
+	color: ${props => (isLight(props) ? 'rgb(100,100,100)' : 'rgb(200,200,200)')};
+	svg {
+		fill: ${props =>
+			isLight(props) ? 'rgb(100,100,100)' : 'rgb(200,200,200)'};
 	}
 `
 
