@@ -89,6 +89,9 @@ export const InputText = styled.input<ICommonProps>`
 	z-index: 1;
 	background: transparent;
 	color: ${csscolor};
+	&:focus{
+		outline: 0;
+	}
 `
 
 export const TraillingIcon = styled.i<ICommonProps>`
