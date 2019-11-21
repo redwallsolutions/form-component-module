@@ -102,6 +102,7 @@ const App: FC = () => {
 				<div style={{ marginTop: '2em' }}>
 					<Form>
 						<InputField label="Something" field="something" appearance={appearance as IAppearance}/>
+						<InputField label="Password" field="password" type="password" appearance={appearance as IAppearance}/>
 					</Form>
 				</div>
 			</Container>

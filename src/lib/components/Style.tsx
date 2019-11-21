@@ -111,4 +111,14 @@ export const TraillingIcon = styled.i<ICommonProps>`
 	}
 `
 
-export const HelperText = styled.small``
+export const HelperText = styled.small`
+	font-size: 12px;
+	line-height: 16px;
+	position: absolute;
+	left: 12px;
+	bottom: -35%;
+	max-width: 95%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+`

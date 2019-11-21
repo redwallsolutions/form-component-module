@@ -7,7 +7,14 @@ import React, {
 	FocusEvent,
 	useContext
 } from 'react'
-import { Container, Reset, InputText, LabelText, TraillingIcon } from './Style'
+import {
+	Container,
+	Reset,
+	InputText,
+	LabelText,
+	TraillingIcon,
+	HelperText
+} from './Style'
 import { useField } from 'informed'
 import { IInputElement, IInputElementStyled } from './intefaces'
 import { OpenedEyes, ClosedEyes } from '../assets/Icons'
@@ -29,9 +36,9 @@ const TogglePassword: FC<any> = ({ onClick }) => {
 	)
 }
 
-const Field: FC<
-	IInputElement & IInputElementStyled & InputHTMLAttributes<HTMLElement>
-> = ({
+const Field: FC<IInputElement &
+	IInputElementStyled &
+	InputHTMLAttributes<HTMLElement>> = ({
 	shouldFitContainer,
 	initialValue,
 	label,
@@ -74,9 +81,9 @@ const Field: FC<
 		setTypeAttr(typeAttr === 'password' ? 'text' : 'password')
 	}
 	const themeToApply = useContext(ThemeContext) || theme
-	const { fieldState, fieldApi, ref } = useField({field, mask, initialValue})
+	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue })
 	const { setValue, setTouched } = fieldApi
-	let { value } = fieldState
+	let { value, error } = fieldState
 	value = value ? (value === '🔤' ? '' : value) : initialValue || ''
 	const isFilled = value && value !== '' ? true : false
 	return (
@@ -118,6 +125,7 @@ const Field: FC<
 						)}
 					</TraillingIcon>
 				)}
+				{error && <HelperText title={error}>{error}</HelperText>}
 			</Container>
 		</div>
 	)
