@@ -1,6 +1,10 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, keyframes } from 'styled-components'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
-import { IInputElementInteraction, IInputElementStyled } from './intefaces'
+import {
+	IInputElementInteraction,
+	IInputElementStyled,
+	IFieldError
+} from './interfaces'
 import Color from 'color'
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
@@ -111,6 +115,21 @@ export const TraillingIcon = styled.i<ICommonProps>`
 	}
 `
 
+const zoomin = keyframes`
+	0% {
+		transform: translateY(-100%) scale(.9);
+		opacity: 0;
+	}
+
+	30% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+`
+
 export const HelperText = styled.small`
 	font-size: 12px;
 	line-height: 16px;
@@ -121,5 +140,12 @@ export const HelperText = styled.small`
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-	color: ${props => isLight(props) ? '#b00020ff' : Color('#b00020ff').lighten(.5).toString()};
+	color: ${props =>
+		isLight(props)
+			? '#b00020ff'
+			: Color('#b00020ff')
+					.lighten(0.5)
+					.toString()};
+	animation-duration: 0.3s;
+	animation-name: ${zoomin};
 `

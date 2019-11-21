@@ -16,7 +16,7 @@ import {
 	HelperText
 } from './Style'
 import { useField } from 'informed'
-import { IInputElement, IInputElementStyled } from './intefaces'
+import { IInputElement, IInputElementStyled } from './interfaces'
 import { OpenedEyes, ClosedEyes } from '../assets/Icons'
 import { ThemeContext } from 'styled-components'
 
@@ -127,7 +127,11 @@ const Field: FC<IInputElement &
 						)}
 					</TraillingIcon>
 				)}
-				{error && <HelperText title={error}>{error}</HelperText>}
+				{error && (
+					<HelperText title={error} visible={error ? true : false}>
+						{error}
+					</HelperText>
+				)}
 			</Container>
 		</div>
 	)
