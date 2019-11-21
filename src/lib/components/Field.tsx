@@ -108,6 +108,7 @@ const Field: FC<IInputElement &
 					theme={themeToApply}
 					appearance={appearance}
 					title={label}
+					hasError={false}
 				>
 					{label}
 					{required && <RequiredIcon/>}
