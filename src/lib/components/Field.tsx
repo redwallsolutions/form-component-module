@@ -51,6 +51,8 @@ const Field: FC<IInputElement &
 	onChange,
 	mask,
 	field,
+	validate,
+	required,
 	...rest
 }) => {
 	const [isFocused, setIsFocused] = useState(false)
@@ -81,7 +83,7 @@ const Field: FC<IInputElement &
 		setTypeAttr(typeAttr === 'password' ? 'text' : 'password')
 	}
 	const themeToApply = useContext(ThemeContext) || theme
-	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue })
+	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue, validate })
 	const { setValue, setTouched } = fieldApi
 	let { value, error } = fieldState
 	value = value ? (value === '🔤' ? '' : value) : initialValue || ''

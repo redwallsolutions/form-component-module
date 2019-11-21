@@ -1,5 +1,6 @@
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 import { ReactNode } from 'react'
+import { BasicFormProps } from 'informed'
 
 export type MaskType = 'default' | 'money' | 'percent' | 'cel'
 
@@ -48,4 +49,9 @@ export interface IInputElement {
 	 * The field prop defines the fieldname of the input. (required by informed lib.)
 	 */
 	field: string
+
+	/**
+	 * The validate prop defines a validation function to be used to valid field data value.
+	 */
+	validate?: (value: any) => any
 }

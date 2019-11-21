@@ -100,9 +100,24 @@ const App: FC = () => {
 					</InputItem>
 				</InputsContainer>
 				<div style={{ marginTop: '2em' }}>
-					<Form>
-						<InputField label="Something" field="something" appearance={appearance as IAppearance}/>
-						<InputField label="Password" field="password" type="password" appearance={appearance as IAppearance}/>
+					<Form onSubmit={console.log}>
+						<div style={{ margin: 30 }}>
+							<InputField
+								label="Something"
+								field="something"
+								appearance={appearance as IAppearance}
+								required
+							/>
+						</div>
+						<div style={{ margin: 30 }}>
+							<InputField
+								label="Password"
+								field="password"
+								type="password"
+								appearance={appearance as IAppearance}
+							/>
+						</div>
+						<button type='submit'>Submit</button>
 					</Form>
 				</div>
 			</Container>

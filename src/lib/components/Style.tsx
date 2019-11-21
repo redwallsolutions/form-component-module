@@ -121,4 +121,5 @@ export const HelperText = styled.small`
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+	color: ${props => isLight(props) ? '#b00020ff' : Color('#b00020ff').lighten(.5).toString()};
 `
