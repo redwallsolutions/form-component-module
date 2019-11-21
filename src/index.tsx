@@ -46,7 +46,6 @@ const InputItem = styled.div`
 const App: FC = () => {
 	const [themeMode, setThemeMode] = useState('light')
 	const [appearance, setAppearance] = useState('default')
-	const [visible, setVisible] = useState(false)
 
 	const onChange = (event: FormEvent) => {
 		let currentTarget = event.currentTarget
@@ -101,22 +100,30 @@ const App: FC = () => {
 				</InputsContainer>
 				<div style={{ marginTop: '2em' }}>
 					<Form onSubmit={console.log}>
-						<div style={{ margin: 30 }}>
 							<InputField
 								label="Something"
 								field="something"
 								appearance={appearance as IAppearance}
 								required
 							/>
-						</div>
-						<div style={{ margin: 30 }}>
 							<InputField
 								label="Password"
 								field="password"
 								type="password"
 								appearance={appearance as IAppearance}
 							/>
-						</div>
+							<InputField
+								label="Can't be 2 (Custom Validator)"
+								field="cantbetwo"
+								appearance={appearance as IAppearance}
+								validate={(value:any)=> value && value === '2' ? 'Can\'t be 2' : undefined}
+							/>
+							<InputField
+								label="I have initial value"
+								field="initialvalue"
+								appearance={appearance as IAppearance}
+								initialValue="I <3 RW"
+							/>
 						<button type='submit'>Submit</button>
 					</Form>
 				</div>

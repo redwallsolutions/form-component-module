@@ -17,7 +17,7 @@ export const Reset = createGlobalStyle`
     width: 100%;
     height: auto;
     font-family: Arial, Helvetica, Geneva, Tahoma, sans-serif;
-    &, & * {
+    &, * {
       transition: .2s;
       box-sizing: border-box;
     }
@@ -48,6 +48,17 @@ export const Container = styled.div<
 				.grayscale()
 				.toString()}`}
 	}
+	margin-bottom: 30px;
+	${props =>
+		props.hasError &&
+		`box-shadow: 0 0 0 ${isFilledOrFocused(props) ? 2 : 1}px
+		${
+			isLight(props)
+				? '#b00020ff'
+				: Color('#b00020ff')
+						.lighten(0.5)
+						.toString()
+		} !important`}
 `
 
 export const LeadingIcon = styled.i``
@@ -115,7 +126,7 @@ export const RequiredIcon = styled.span`
 	color: #b00020ff;
 	margin: 0 2px;
 	&::before {
-		content: '*'
+		content: '*';
 	}
 `
 

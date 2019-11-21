@@ -53,7 +53,9 @@ const Field: FC<IInputElement &
 	mask,
 	field,
 	validate,
+	validateOnChange=true,
 	required,
+	placeholder,
 	...rest
 }) => {
 	const [isFocused, setIsFocused] = useState(false)
@@ -84,7 +86,7 @@ const Field: FC<IInputElement &
 		setTypeAttr(typeAttr === 'password' ? 'text' : 'password')
 	}
 	const themeToApply = useContext(ThemeContext) || theme
-	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue, validate })
+	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue, validate, validateOnChange })
 	const { setValue, setTouched } = fieldApi
 	let { value, error } = fieldState
 	value = value ? (value === '🔤' ? '' : value) : initialValue || ''
@@ -98,6 +100,7 @@ const Field: FC<IInputElement &
 				isFilled={isFilled}
 				theme={themeToApply}
 				appearance={appearance}
+				hasError={error ? true : false}
 			>
 				<LabelText
 					isFocused={isFocused}
@@ -110,6 +113,7 @@ const Field: FC<IInputElement &
 					{required && <RequiredIcon/>}
 				</LabelText>
 				<InputText
+					{...rest}
 					ref={ref}
 					value={value as any}
 					onFocus={onFocusInner}
@@ -130,7 +134,7 @@ const Field: FC<IInputElement &
 					</TraillingIcon>
 				)}
 				{error && (
-					<HelperText title={error} visible={error ? true : false}>
+					<HelperText title={error}>
 						{error}
 					</HelperText>
 				)}

@@ -5,7 +5,8 @@ export type MaskType = 'default' | 'money' | 'percent' | 'cel'
 
 export interface IInputElementInteraction extends ICommonProps {
 	isFocused: boolean
-	isFilled: boolean
+	isFilled: boolean,
+	hasError:boolean
 }
 
 export interface IInputElementStyled extends ICommonProps {
@@ -53,4 +54,9 @@ export interface IInputElement {
 	 * The validate prop defines a validation function to be used to valid field data value.
 	 */
 	validate?: (value: any) => any
+
+	/**
+	 * The validateOnChange prop defines if validation will occur every time a onChange event trigger.
+	 */
+	validateOnChange?:boolean
 }
