@@ -13,7 +13,8 @@ import {
 	InputText,
 	LabelText,
 	TraillingIcon,
-	HelperText
+	HelperText,
+	RequiredIcon
 } from './Style'
 import { useField } from 'informed'
 import { IInputElement, IInputElementStyled } from './interfaces'
@@ -106,6 +107,7 @@ const Field: FC<IInputElement &
 					title={label}
 				>
 					{label}
+					{required && <RequiredIcon/>}
 				</LabelText>
 				<InputText
 					ref={ref}

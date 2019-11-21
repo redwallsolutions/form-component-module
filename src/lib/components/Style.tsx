@@ -1,10 +1,6 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
-import {
-	IInputElementInteraction,
-	IInputElementStyled,
-	IFieldError
-} from './interfaces'
+import { IInputElementInteraction, IInputElementStyled } from './interfaces'
 import Color from 'color'
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
@@ -112,6 +108,14 @@ export const TraillingIcon = styled.i<ICommonProps>`
 	svg {
 		fill: ${props =>
 			isLight(props) ? 'rgb(100,100,100)' : 'rgb(200,200,200)'};
+	}
+`
+
+export const RequiredIcon = styled.span`
+	color: #b00020ff;
+	margin: 0 2px;
+	&::before {
+		content: '*'
 	}
 `
 
