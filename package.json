@@ -34,7 +34,7 @@
     "parcel-bundler": "^1.12.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-icons": "^3.3.0",
+    "react-icons": "^3.8.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.7.2"
   },

@@ -1,6 +1,10 @@
 import styled, { createGlobalStyle, keyframes } from 'styled-components'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
-import { IInputElementInteraction, IInputElementStyled } from './interfaces'
+import {
+	IInputElementInteraction,
+	IInputElementStyled,
+	IFieldWithIcon
+} from './interfaces'
 import Color from 'color'
 import { ICommonProps } from '@redwallsolutions/common-interfaces-ts'
 
@@ -61,11 +65,11 @@ export const Container = styled.div<
 		} !important`}
 `
 
-export const LeadingIcon = styled.i``
-
-export const LabelText = styled.label<IInputElementInteraction>`
+export const LabelText = styled.label<
+	IInputElementInteraction & IFieldWithIcon
+>`
 	position: absolute;
-	left: 12px;
+	left: ${props => (props.hasLeading ? 42 : 12)}px;
 	text-align: left;
 	top: calc(50% - 9.5px);
 	z-index: 0;
@@ -89,12 +93,12 @@ export const LabelText = styled.label<IInputElementInteraction>`
 	overflow: hidden;
 `
 
-export const InputText = styled.input<ICommonProps>`
+export const InputText = styled.input<ICommonProps & IFieldWithIcon>`
 	position: absolute;
 	right: 0;
 	width: 100%;
 	padding-top: 15px;
-	text-indent: 12px;
+	text-indent: ${props => (props.hasLeading ? 42 : 12)}px;
 	height: 100%;
 	font-size: 16px;
 	box-shadow: none;
@@ -107,10 +111,8 @@ export const InputText = styled.input<ICommonProps>`
 	}
 `
 
-export const TraillingIcon = styled.i<ICommonProps>`
+export const Icon = styled.i<ICommonProps>`
 	position: absolute;
-	right: 12px;
-	top: calc(50% - 12px);
 	width: 24px;
 	height: 24px;
 	cursor: pointer;
@@ -122,6 +124,15 @@ export const TraillingIcon = styled.i<ICommonProps>`
 	}
 `
 
+export const TraillingIcon = styled(Icon)`
+	right: 12px;
+	top: calc(50% - 12px);
+`
+
+export const LeadingIcon = styled(Icon)`
+	left: 8px;
+	top: calc(50% - 12px);
+`
 export const RequiredIcon = styled.span`
 	color: #b00020ff;
 	margin: 0 2px;
@@ -135,7 +146,7 @@ const zoomin = keyframes`
 		transform: translateY(-100%) scale(.9);
 		opacity: 0;
 	}
-
+	
 	30% {
 		opacity: 0;
 	}
@@ -143,7 +154,7 @@ const zoomin = keyframes`
 		transform: translateY(0) scale(1);
 		opacity: 1;
 	}
-`
+	`
 
 export const HelperText = styled.small`
 	font-size: 12px;

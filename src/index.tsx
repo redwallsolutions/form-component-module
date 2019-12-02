@@ -4,6 +4,7 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { createThemeWithAppearance } from '@redwallsolutions/theming-component-module'
 import { InputField, Form } from './lib'
 import { IAppearance } from '@redwallsolutions/common-interfaces-ts'
+import { Md3DRotation } from 'react-icons/md'
 
 const theming = createThemeWithAppearance()
 
@@ -123,6 +124,12 @@ const App: FC = () => {
 								field="initialvalue"
 								appearance={appearance as IAppearance}
 								initialValue="I <3 RW"
+							/>
+							<InputField
+								label="Leading Icon"
+								field="leadingIcon"
+								appearance={appearance as IAppearance}
+								leading={<Md3DRotation size={20}/>}
 							/>
 						<button type='submit'>Submit</button>
 					</Form>

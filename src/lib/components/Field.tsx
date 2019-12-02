@@ -5,7 +5,8 @@ import React, {
 	InputHTMLAttributes,
 	MouseEvent,
 	FocusEvent,
-	useContext
+	useContext,
+	ReactElement
 } from 'react'
 import {
 	Container,
@@ -14,7 +15,8 @@ import {
 	LabelText,
 	TraillingIcon,
 	HelperText,
-	RequiredIcon
+	RequiredIcon,
+	LeadingIcon
 } from './Style'
 import { useField } from 'informed'
 import { IInputElement, IInputElementStyled } from './interfaces'
@@ -43,6 +45,7 @@ const Field: FC<IInputElement &
 	shouldFitContainer,
 	initialValue,
 	label,
+	leading,
 	trailling,
 	theme = { mode: 'light' },
 	type,
@@ -53,7 +56,7 @@ const Field: FC<IInputElement &
 	mask,
 	field,
 	validate,
-	validateOnChange=true,
+	validateOnChange = true,
 	required,
 	placeholder,
 	...rest
@@ -86,7 +89,13 @@ const Field: FC<IInputElement &
 		setTypeAttr(typeAttr === 'password' ? 'text' : 'password')
 	}
 	const themeToApply = useContext(ThemeContext) || theme
-	const { fieldState, fieldApi, ref } = useField({ field, mask, initialValue, validate, validateOnChange })
+	const { fieldState, fieldApi, ref } = useField({
+		field,
+		mask,
+		initialValue,
+		validate,
+		validateOnChange
+	})
 	const { setValue, setTouched } = fieldApi
 	let { value, error } = fieldState
 	value = value ? (value === '🔤' ? '' : value) : initialValue || ''
@@ -102,6 +111,11 @@ const Field: FC<IInputElement &
 				appearance={appearance}
 				hasError={error ? true : false}
 			>
+				{leading && (
+					<LeadingIcon theme={themeToApply} appearance={appearance}>
+						{React.cloneElement(leading as ReactElement, { size: 24 })}
+					</LeadingIcon>
+				)}
 				<LabelText
 					isFocused={isFocused}
 					isFilled={isFilled}
@@ -109,9 +123,10 @@ const Field: FC<IInputElement &
 					appearance={appearance}
 					title={label}
 					hasError={false}
+					hasLeading={leading ? true : false}
 				>
 					{label}
-					{required && <RequiredIcon/>}
+					{required && <RequiredIcon />}
 				</LabelText>
 				<InputText
 					{...rest}
@@ -123,6 +138,7 @@ const Field: FC<IInputElement &
 					theme={themeToApply}
 					appearance={appearance}
 					type={typeAttr}
+					hasLeading={leading ? true : false}
 				/>
 
 				{(type === 'password' || trailling) && (
@@ -134,11 +150,7 @@ const Field: FC<IInputElement &
 						)}
 					</TraillingIcon>
 				)}
-				{error && (
-					<HelperText title={error}>
-						{error}
-					</HelperText>
-				)}
+				{error && <HelperText title={error}>{error}</HelperText>}
 			</Container>
 		</div>
 	)

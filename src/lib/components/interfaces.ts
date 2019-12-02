@@ -9,6 +9,10 @@ export interface IInputElementInteraction extends ICommonProps {
 	hasError:boolean
 }
 
+export interface IFieldWithIcon {
+	hasLeading?:boolean
+}
+
 export interface IInputElementStyled extends ICommonProps {
 	/**
 	 * the shouldFitContainer defines if the input (or another field component, select, etc) will expand to
@@ -28,6 +32,11 @@ export interface IInputElement {
 	 * The label prop defines a label that appears at the top of the actived input.
 	 */
 	label: string
+	
+	/**
+	 * The leading prop defines, usually an icon that appear at the beginning of the input (or another field component, select, etc).
+	 */
+	leading?: ReactNode
 
 	/**
 	 * The trailling prop defines, usually, an icon that appears in the end of input (or another field component, select, etc).
