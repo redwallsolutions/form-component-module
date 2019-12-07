@@ -100,58 +100,68 @@ const Field: FC<IInputElement &
 	let { value, error } = fieldState
 	value = value ? (value === '🔤' ? '' : value) : initialValue || ''
 	const isFilled = value && value !== '' ? true : false
+	const isntHidden = type !== 'hidden'
 	return (
 		<div className="form-component-module">
 			<Reset />
-			<Container
-				shouldFitContainer={shouldFitContainer}
-				isFocused={isFocused}
-				isFilled={isFilled}
-				theme={themeToApply}
-				appearance={appearance}
-				hasError={error ? true : false}
-			>
-				{leading && (
-					<LeadingIcon theme={themeToApply} appearance={appearance}>
-						{React.cloneElement(leading as ReactElement, { size: 24 })}
-					</LeadingIcon>
-				)}
-				<LabelText
+			{isntHidden ? (
+				<Container
+					shouldFitContainer={shouldFitContainer}
 					isFocused={isFocused}
 					isFilled={isFilled}
 					theme={themeToApply}
 					appearance={appearance}
-					title={label}
-					hasError={false}
-					hasLeading={leading ? true : false}
+					hasError={error ? true : false}
 				>
-					{label}
-					{required && <RequiredIcon />}
-				</LabelText>
+					{leading && (
+						<LeadingIcon theme={themeToApply} appearance={appearance}>
+							{React.cloneElement(leading as ReactElement, { size: 24 })}
+						</LeadingIcon>
+					)}
+					<LabelText
+						isFocused={isFocused}
+						isFilled={isFilled}
+						theme={themeToApply}
+						appearance={appearance}
+						title={label}
+						hasError={false}
+						hasLeading={leading ? true : false}
+					>
+						{label}
+						{required && <RequiredIcon />}
+					</LabelText>
+					<InputText
+						{...rest}
+						ref={ref}
+						value={value as any}
+						onFocus={onFocusInner}
+						onBlur={onBlurInner}
+						onChange={onChangeInner}
+						theme={themeToApply}
+						appearance={appearance}
+						type={typeAttr}
+						hasLeading={leading ? true : false}
+					/>
+
+					{(type === 'password' || trailling) && (
+						<TraillingIcon theme={themeToApply} appearance={appearance}>
+							{type === 'password' ? (
+								<TogglePassword onClick={onToggleShowPassword} />
+							) : (
+								trailling
+							)}
+						</TraillingIcon>
+					)}
+					{error && <HelperText title={error}>{error}</HelperText>}
+				</Container>
+			) : (
 				<InputText
 					{...rest}
 					ref={ref}
 					value={value as any}
-					onFocus={onFocusInner}
-					onBlur={onBlurInner}
-					onChange={onChangeInner}
-					theme={themeToApply}
-					appearance={appearance}
 					type={typeAttr}
-					hasLeading={leading ? true : false}
 				/>
-
-				{(type === 'password' || trailling) && (
-					<TraillingIcon theme={themeToApply} appearance={appearance}>
-						{type === 'password' ? (
-							<TogglePassword onClick={onToggleShowPassword} />
-						) : (
-							trailling
-						)}
-					</TraillingIcon>
-				)}
-				{error && <HelperText title={error}>{error}</HelperText>}
-			</Container>
+			)}
 		</div>
 	)
 }

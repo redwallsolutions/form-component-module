@@ -101,37 +101,40 @@ const App: FC = () => {
 				</InputsContainer>
 				<div style={{ marginTop: '2em' }}>
 					<Form onSubmit={console.log}>
-							<InputField
-								label="Something"
-								field="something"
-								appearance={appearance as IAppearance}
-								required
-							/>
-							<InputField
-								label="Password"
-								field="password"
-								type="password"
-								appearance={appearance as IAppearance}
-							/>
-							<InputField
-								label="Can't be 2 (Custom Validator)"
-								field="cantbetwo"
-								appearance={appearance as IAppearance}
-								validate={(value:any)=> value && value === '2' ? 'Can\'t be 2' : undefined}
-							/>
-							<InputField
-								label="I have initial value"
-								field="initialvalue"
-								appearance={appearance as IAppearance}
-								initialValue="I <3 RW"
-							/>
-							<InputField
-								label="Leading Icon"
-								field="leadingIcon"
-								appearance={appearance as IAppearance}
-								leading={<Md3DRotation size={20}/>}
-							/>
-						<button type='submit'>Submit</button>
+						<InputField
+							label="Something"
+							field="something"
+							appearance={appearance as IAppearance}
+							required
+						/>
+						<InputField
+							label="Password"
+							field="password"
+							type="password"
+							appearance={appearance as IAppearance}
+						/>
+						<InputField
+							label="Can't be 2 (Custom Validator)"
+							field="cantbetwo"
+							appearance={appearance as IAppearance}
+							validate={(value: any) =>
+								value && value === '2' ? "Can't be 2" : undefined
+							}
+						/>
+						<InputField
+							label="I have initial value"
+							field="initialvalue"
+							appearance={appearance as IAppearance}
+							initialValue="I <3 RW"
+						/>
+						<InputField
+							label="Leading Icon"
+							field="leadingIcon"
+							appearance={appearance as IAppearance}
+							leading={<Md3DRotation size={20} />}
+						/>
+						<InputField label="hidden" type="hidden" field="hidden" initialValue={1}/>
+						<button type="submit">Submit</button>
 					</Form>
 				</div>
 			</Container>
