@@ -32,7 +32,6 @@ export const Container = styled.div<
 	IInputElementInteraction & IInputElementStyled
 >`
 	position: relative;
-	min-width: 280px;
 	width: ${props => (props.shouldFitContainer ? '100%' : '280px')};
 	height: 56px;
 	border-radius: 4px;
