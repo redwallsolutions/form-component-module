@@ -2,7 +2,7 @@ import React, { FC, FormEvent, useState } from "react";
 import { render } from "react-dom";
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import { createThemeWithAppearance } from "@redwallsolutions/theming-component-module";
-import { InputField, Form } from "./lib";
+import { InputField, Form, TextAreaField } from "./lib";
 import { IAppearance } from "@redwallsolutions/common-interfaces-ts";
 import { Md3DRotation } from "react-icons/md";
 
@@ -145,8 +145,10 @@ const App: FC = () => {
                 label="Very small field"
                 field="verySmall"
                 shouldFitContainer
+                isMultiline
               />
             </div>
+            <TextAreaField field="textArea" label="hdua" required/>
             <button type="submit">Submit</button>
           </Form>
         </div>
