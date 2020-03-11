@@ -19,11 +19,14 @@ export interface ILabelTextStyled {
 
 export interface IFieldElementStyled extends ICommonProps {
   /**
-   * the shouldFitContainer defines if the input (or another field component, select, etc) will expand to
+   * The shouldFitContainer defines if the input (or another field component, select, etc) will expand to
    * fit to parent width.
    */
   shouldFitContainer?: boolean;
 
+  /**
+   * The isMultiline prop defines if a InputField show behave itself as a textarea.
+   */
   isMultiline?: boolean;
 }
 

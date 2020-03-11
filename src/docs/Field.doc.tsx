@@ -1,7 +1,7 @@
 import React from 'react'
-import { IInputElement, IInputElementStyled } from '../lib/components/intefaces'
+import { IFieldElement, IFieldElementStyled } from '../lib/components/interfaces'
 
-const Field: React.FC<IInputElement & IInputElementStyled> = ({
+const Field: React.FC<IFieldElement & IFieldElementStyled> = ({
 	appearance = 'default',
 	field,
 	initialValue,
@@ -10,6 +10,8 @@ const Field: React.FC<IInputElement & IInputElementStyled> = ({
 	shouldFitContainer,
 	theme = { mode: 'light' },
 	trailling,
+	leading,
+	isMultiline,
 	...rest
 }) => {
 	return null

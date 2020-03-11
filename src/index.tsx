@@ -148,7 +148,7 @@ const App: FC = () => {
                 isMultiline
               />
             </div>
-            <TextAreaField field="textArea" label="hdua" required/>
+            <TextAreaField field="textArea" label="hdua" required />
             <button type="submit">Submit</button>
           </Form>
         </div>

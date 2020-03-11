@@ -5,12 +5,12 @@ route: /
 
 import { Playground, Props } from 'docz'
 import Field from './src/docs/Field.doc'
-import { InputField, Form } from './src/lib'
+import { InputField, Form, TextAreaField } from './src/lib'
 
 ## Introduction
 
-Form Component Module is react component package that wraps up [informed](https://github.com/joepuzzo/informed) and
-adds some material design style.
+Form Component Module is a react component package that wraps up [informed](https://github.com/joepuzzo/informed) mechanism and
+applies some material design style to input and textarea components.
 
 ![demogif](src/lib/assets/demo.gif)
 
@@ -26,7 +26,7 @@ Or using `npm`:
 
 ### Available Components
 
-    {InputField, Form} from '@redwallsolution/form-component-module'
+	import {InputField, TextAreaField, Form} from '@redwallsolution/form-component-module'
 
 ## Props
 
@@ -38,6 +38,14 @@ Or using `npm`:
 
 <Playground>
 	<InputField field="somename" label="My Input" />
+</Playground>
+
+### The shouldFitContainer prop 
+
+It's possible to the field fit to parent width.
+
+<Playground>
+	<InputField field="fitmyparent" label="I'm responsible" shouldFitContainer/>
 </Playground>
 
 ### Password Type
@@ -54,4 +62,19 @@ Or using `npm`:
         <button type="submit">Save</button>
         <div><small><em>Pro tip: After save it, look at console!</em></small></div>
 	</Form>
+</Playground>
+
+
+### TextAreaField or isMultiline prop
+
+You can use the `TextAreaField` component to an alternative for long texts.
+
+<Playground>
+	<TextAreaField label="It's a place for type a loooong text." field="mylongtext" shouldFitContainer/>
+</Playground>
+
+You also can force a `InputField` component to behave itself as a textarea. Just pass the `isMultiline` prop to it. 
+
+<Playground>
+	<InputField label="I'm pretending to be bigger." field="faketextarea" isMultiline/>
 </Playground>
