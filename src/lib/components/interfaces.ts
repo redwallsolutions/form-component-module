@@ -1,5 +1,4 @@
 import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
-import { ReactNode } from "react";
 
 export type MaskType = "default" | "money" | "percent" | "cel";
 
@@ -45,12 +44,12 @@ export interface IFieldElement {
   /**
    * The leading prop defines, usually an icon that appear at the beginning of the input (or another field component, select, etc).
    */
-  leading?: ReactNode;
+  leading?: any;
 
   /**
    * The trailling prop defines, usually, an icon that appears in the end of input (or another field component, select, etc).
    */
-  trailling?: ReactNode;
+  trailling?: any;
 
   /**
    * The mask prop defines a function that will mask the value of input. It receives the current value of the value and returns
