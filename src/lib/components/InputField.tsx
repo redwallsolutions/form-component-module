@@ -1,10 +1,10 @@
 import React, { FC, InputHTMLAttributes } from 'react'
 import utils from '../utils'
 import Field from './Field'
-import { IInputElement, IInputElementStyled } from './interfaces'
+import { IFieldElement, IFieldElementStyled } from './interfaces'
 
-const InputField: FC<IInputElement &
-	IInputElementStyled &
+const InputField: FC<IFieldElement &
+	IFieldElementStyled &
 	InputHTMLAttributes<HTMLElement>> = ({
 	mask,
 	maskType = 'default',

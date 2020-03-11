@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 export type MaskType = 'default' | 'money' | 'percent' | 'cel'
 
-export interface IInputElementInteraction extends ICommonProps {
+export interface IFieldElementInteraction extends ICommonProps {
 	isFocused: boolean
 	isFilled: boolean,
 	hasError:boolean
@@ -13,7 +13,7 @@ export interface IFieldWithIcon {
 	hasLeading?:boolean
 }
 
-export interface IInputElementStyled extends ICommonProps {
+export interface IFieldElementStyled extends ICommonProps {
 	/**
 	 * the shouldFitContainer defines if the input (or another field component, select, etc) will expand to
 	 * fit to parent width.
@@ -21,7 +21,7 @@ export interface IInputElementStyled extends ICommonProps {
 	shouldFitContainer?: boolean
 }
 
-export interface IInputElement {
+export interface IFieldElement {
 	/**
 	 * The initialValue prop defines the initial value for the input (or another field component, select, etc).
 	 * This value will be assigned to "value" prop and then component will deal with it in its internal state.

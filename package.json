@@ -31,6 +31,7 @@
     "babel-preset-react-app": "^9.0.2",
     "docz": "^2.0.0-rc.75",
     "gh-pages": "^2.1.1",
+    "husky": "^4.2.3",
     "parcel-bundler": "^1.12.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -38,7 +39,14 @@
     "rimraf": "^2.6.3",
     "typescript": "^3.7.2"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@redwallsolutions/common-interfaces-ts": "^1.0.2",
     "@redwallsolutions/theming-component-module": "^2.0.2",
     "color": "^3.1.2",

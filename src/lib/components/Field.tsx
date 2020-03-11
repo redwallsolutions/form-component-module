@@ -19,7 +19,7 @@ import {
 	LeadingIcon
 } from './Style'
 import { useField } from 'informed'
-import { IInputElement, IInputElementStyled } from './interfaces'
+import { IFieldElement, IFieldElementStyled } from './interfaces'
 import { OpenedEyes, ClosedEyes } from '../assets/Icons'
 import { ThemeContext } from 'styled-components'
 
@@ -39,8 +39,8 @@ const TogglePassword: FC<any> = ({ onClick }) => {
 	)
 }
 
-const Field: FC<IInputElement &
-	IInputElementStyled &
+const Field: FC<IFieldElement &
+	IFieldElementStyled &
 	InputHTMLAttributes<HTMLElement>> = ({
 	shouldFitContainer,
 	initialValue,
