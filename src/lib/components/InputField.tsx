@@ -15,6 +15,7 @@ const InputField: FC<IFieldElement &
 	return (
 		<Field
 			mask={mask || utils[maskType]}
+			maskType={maskType}
 			required={required}
 			validate={required ? utils.isEmpty : validate}
 			{...rest}

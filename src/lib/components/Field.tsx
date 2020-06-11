@@ -6,7 +6,7 @@ import React, {
   MouseEvent,
   FocusEvent,
   useContext,
-  ReactElement
+  ReactElement,
 } from "react";
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   HelperText,
   RequiredIcon,
   LeadingIcon,
-  TextArea
+  TextArea,
 } from "./Style";
 import { useField } from "informed";
 import { IFieldElement, IFieldElementStyled } from "./interfaces";
@@ -55,6 +55,7 @@ const Field: FC<IFieldElement &
   onBlur,
   onChange,
   mask,
+  maskType,
   field,
   validate,
   validateOnChange = true,
@@ -91,6 +92,12 @@ const Field: FC<IFieldElement &
     if (onChange) {
       onChange(event);
     }
+    if (maskType === "money") {
+      setTimeout(() => {
+        ref.current.selectionStart = ref.current.selectionEnd =
+          value.length + 5;
+      }, 2);
+    }
   };
 
   const onToggleShowPassword = () => {
@@ -102,7 +109,7 @@ const Field: FC<IFieldElement &
     mask,
     initialValue,
     validate,
-    validateOnChange
+    validateOnChange,
   });
   const { setValue, setTouched } = fieldApi;
   let { value, error } = fieldState;
@@ -120,7 +127,7 @@ const Field: FC<IFieldElement &
     theme: themeToApply,
     appearance,
     type: typeAttr,
-    hasLeading: leading ? true : false
+    hasLeading: leading ? true : false,
   };
   return (
     <div className="form-component-module">
@@ -145,8 +152,8 @@ const Field: FC<IFieldElement &
             isFilled={isFilled}
             theme={themeToApply}
             appearance={appearance}
-			title={label}
-			isMultiline={isMultiline}
+            title={label}
+            isMultiline={isMultiline}
             hasError={false}
             hasLeading={leading ? true : false}
           >

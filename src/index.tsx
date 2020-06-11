@@ -13,8 +13,8 @@ const Reset = createGlobalStyle<any>`
 		font-family: Arial, Helvetica, Geneva, Tahoma, sans-serif;
         padding: 0;
         margin: 0;
-        background-color: ${props => theming(props).contrast};
-        color: ${props => theming(props).color};
+        background-color: ${(props) => theming(props).contrast};
+        color: ${(props) => theming(props).color};
         &, * {
             box-sizing: border-box;
             transition: .3s;
@@ -23,7 +23,7 @@ const Reset = createGlobalStyle<any>`
 `;
 
 Reset.defaultProps = {
-  appearance: "default"
+  appearance: "default",
 } as any;
 
 const Container = styled.div`
@@ -132,6 +132,18 @@ const App: FC = () => {
               field="leadingIcon"
               appearance={appearance as IAppearance}
               leading={<Md3DRotation size={20} />}
+            />
+            <InputField
+              label="CPF"
+              field="cpf"
+              appearance={appearance as IAppearance}
+              maskType="cpf"
+            />
+            <InputField
+              label="Money"
+              field="money"
+              appearance={appearance as IAppearance}
+              maskType="money"
             />
             <InputField
               label="hidden"
