@@ -17,9 +17,13 @@ const simpleMonthYear = (value: string) => {
     .replace(/\D/g, "")
     .replace(/^[^0-1]{1}/, "")
     .replace(/^(1)[^0-2]/, "$1")
-    .replace(/^(0)0/, '$1')
+    .replace(/^(0)0/, "$1")
     .replace(/(\d{2})(\d)/, "$1/$2")
     .replace(/(\/\d{2})\d+?$/, "$1");
+};
+
+const cvc = (value: string) => {
+  return value.replace(/\D/g, "").replace(/(\d{3})\d+$/, "$1");
 };
 const percent = (value: string) => {
   let newValue = value.replace(/[a-zA-Z%]/g, "");
@@ -75,4 +79,5 @@ export default {
   default: _default,
   isEmpty,
   simpleMonthYear,
+  cvc,
 } as any;

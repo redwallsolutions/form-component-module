@@ -152,6 +152,12 @@ const App: FC = () => {
               maskType="simpleMonthYear"
             />
             <InputField
+              label="CVC"
+              field="cvc"
+              appearance={appearance as IAppearance}
+              maskType="cvc"
+            />
+            <InputField
               label="hidden"
               type="hidden"
               field="hidden"
