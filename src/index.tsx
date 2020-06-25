@@ -146,6 +146,12 @@ const App: FC = () => {
               maskType="money"
             />
             <InputField
+              label="Simple Month Year"
+              field="simplemonthyear"
+              appearance={appearance as IAppearance}
+              maskType="simpleMonthYear"
+            />
+            <InputField
               label="hidden"
               type="hidden"
               field="hidden"

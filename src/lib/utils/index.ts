@@ -6,12 +6,21 @@ numeral.defaultFormat("$0,0.00");
 const money = (value: string) => {
   let newValue: string | number = value.replace(/\D+/g, "").replace(/^0+/, "");
   newValue = parseInt(newValue) / 100;
-  if(isNaN(newValue)){
-	  return ""
+  if (isNaN(newValue)) {
+    return "";
   }
   return numeral(newValue).format();
 };
 
+const simpleMonthYear = (value: string) => {
+  return value
+    .replace(/\D/g, "")
+    .replace(/^[^0-1]{1}/, "")
+    .replace(/^(1)[^0-2]/, "$1")
+    .replace(/^(0)0/, '$1')
+    .replace(/(\d{2})(\d)/, "$1/$2")
+    .replace(/(\/\d{2})\d+?$/, "$1");
+};
 const percent = (value: string) => {
   let newValue = value.replace(/[a-zA-Z%]/g, "");
   if (/^([0-9]+)(,[0-9]+)?/g.test(newValue)) {
@@ -65,4 +74,5 @@ export default {
   cpf,
   default: _default,
   isEmpty,
+  simpleMonthYear,
 } as any;

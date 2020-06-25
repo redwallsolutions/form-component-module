@@ -42,7 +42,7 @@ const TogglePassword: FC<any> = ({ onClick }) => {
 
 const Field: FC<IFieldElement &
   IFieldElementStyled &
-  InputHTMLAttributes<HTMLElement>> = ({
+  InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>> = ({
   shouldFitContainer,
   initialValue,
   label,

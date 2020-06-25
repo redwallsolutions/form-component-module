@@ -1,6 +1,6 @@
 import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
 
-export type MaskType = "default" | "money" | "percent" | "cel" | "cpf";
+export type MaskType = "default" | "money" | "percent" | "cel" | "cpf" | "simpleMonthYear";
 
 export interface IFieldElementInteraction extends ICommonProps {
   isFocused: boolean;
