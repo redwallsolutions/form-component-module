@@ -83,4 +83,9 @@ export interface IFieldElement {
    * The validateOnChange prop defines if validation will occur every time a onChange event trigger.
    */
   validateOnChange?: boolean;
+
+  /**
+   * The getRef prop define a function to retrieve the DOM ref.
+   */
+  getRef?: (ref: any) => void;
 }

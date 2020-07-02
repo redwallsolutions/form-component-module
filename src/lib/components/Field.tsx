@@ -7,6 +7,7 @@ import React, {
   FocusEvent,
   useContext,
   ReactElement,
+  useEffect,
 } from "react";
 import {
   Container,
@@ -62,6 +63,7 @@ const Field: FC<IFieldElement &
   required,
   placeholder,
   isMultiline,
+  getRef,
   ...rest
 }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -129,6 +131,12 @@ const Field: FC<IFieldElement &
     type: typeAttr,
     hasLeading: leading ? true : false,
   };
+
+  useEffect(() => {
+    if (getRef) {
+      getRef(ref);
+    }
+  }, []);
   return (
     <div className="form-component-module">
       <Reset />
