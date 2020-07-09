@@ -158,6 +158,18 @@ const App: FC = () => {
               maskType="cvc"
             />
             <InputField
+              label="CEP"
+              field="cep"
+              appearance={appearance as IAppearance}
+              maskType="cep"
+            />
+            <InputField
+              label="Celular"
+              field="cel"
+              appearance={appearance as IAppearance}
+              maskType="cel"
+            />
+            <InputField
               label="hidden"
               type="hidden"
               field="hidden"

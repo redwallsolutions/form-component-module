@@ -7,7 +7,8 @@ export type MaskType =
   | "cel"
   | "cpf"
   | "simpleMonthYear"
-  | "cvc";
+  | "cvc"
+  | "cep";
 
 export interface IFieldElementInteraction extends ICommonProps {
   isFocused: boolean;

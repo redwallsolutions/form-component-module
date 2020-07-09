@@ -40,20 +40,11 @@ const percent = (value: string) => {
 };
 
 const cel = (value: string) => {
-  let newValue = value.replace(/[^\d]/g, "");
-  const celSize = newValue.length;
-  if (celSize > 11) newValue = newValue.slice(1);
-  if (celSize > 7) {
-    newValue = `(${newValue.slice(0, 2)}) ${newValue.slice(
-      2,
-      7
-    )}-${newValue.slice(7)}`;
-  } else if (celSize > 2) {
-    newValue = `(${newValue.slice(0, 2)}) ${newValue.slice(2)}`;
-  } else if (celSize > 0) {
-    newValue = `(${newValue.slice(0)}`;
-  }
-  return newValue;
+  return value
+    .replace(/\D/g, "")
+    .replace(/(\d{1})/, "($1")
+    .replace(/(\d{2})(\d)/, "$1) $2")
+    .replace(/(\d{9})\d+?$/, "$1");
 };
 
 const _default = (value: any) => value;
@@ -71,6 +62,13 @@ const cpf = (value: any) => {
     .replace(/(\d{3})(\d{1,2})/, "$1-$2")
     .replace(/(-\d{2})\d+?$/, "$1");
 };
+
+const cep = (value: any) => {
+  return value
+    .replace(/\D/g, "")
+    .replace(/(\d{5})(\d)/, "$1-$2")
+    .replace(/(-\d{3})\d+?$/, "$1");
+};
 export default {
   money,
   percent,
@@ -80,4 +78,5 @@ export default {
   isEmpty,
   simpleMonthYear,
   cvc,
+  cep,
 } as any;
