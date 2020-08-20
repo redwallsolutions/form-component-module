@@ -4,7 +4,7 @@ import {
   IFieldElementInteraction,
   IFieldElementStyled,
   IFieldWithIcon,
-  ILabelTextStyled
+  ILabelTextStyled,
 } from "./interfaces";
 import Color from "color";
 import { ICommonProps } from "@redwallsolutions/common-interfaces-ts";
@@ -33,27 +33,28 @@ export const Container = styled.div<
   IFieldElementInteraction & IFieldElementStyled
 >`
   position: relative;
-  width: ${props => (props.shouldFitContainer ? "100%" : "280px")};
-  height: ${props => (props.isMultiline ? 100 : 65)}px;
+  width: ${(props) => (props.shouldFitContainer ? "100%" : "280px")};
+  height: ${(props) => (props.isMultiline ? 100 : 65)}px;
   border-radius: 4px;
-  box-shadow: 0 0 0 ${props => (isFilledOrFocused(props) ? 2 : 1)}px
-    ${props =>
+  box-shadow: 0 0 0 ${(props) => (isFilledOrFocused(props) ? 2 : 1)}px
+    ${(props) =>
       isFilledOrFocused(props) ? theming(props).color(props) : "grey"};
   transition: none;
-  background-color: ${props =>
+  background-color: ${(props) =>
     Color(theming(props).contrast(props))
       .lighten(0.4)
       .toString()};
   &:hover {
-    ${props =>
+    ${(props) =>
       !props.isFocused &&
       !props.isFilled &&
       `box-shadow: 0 0 0 1px ${Color(theming(props).color(props))
         .grayscale()
         .toString()}`}
   }
+  ${props => props.isDisabled && 'filter: grayscale(0.5);opacity: 0.5;cursor: not-allowed;'}
   margin-bottom: 30px;
-  ${props =>
+  ${(props) =>
     props.hasError &&
     `box-shadow: 0 0 0 ${isFilledOrFocused(props) ? 2 : 1}px
 		${
@@ -69,17 +70,17 @@ export const LabelText = styled.label<
   IFieldElementInteraction & IFieldWithIcon & ILabelTextStyled
 >`
   position: absolute;
-  left: ${props => (props.hasLeading ? 42 : 12)}px;
+  left: ${(props) => (props.hasLeading ? 42 : 12)}px;
   text-align: left;
   top: calc(50% - 9.5px);
   z-index: 0;
-  transform: ${props =>
+  transform: ${(props) =>
     props.isFocused || props.isFilled
-      ? `translateY(${props.isMultiline ? "-175%" :"-75%"}) scale(.85)`
+      ? `translateY(${props.isMultiline ? "-175%" : "-75%"}) scale(.85)`
       : "translateY(0) scale(1)"};
   transform-origin: left;
   will-change: transform;
-  color: ${props =>
+  color: ${(props) =>
     isFilledOrFocused(props)
       ? theming(props).color
       : Color(theming(props).color(props))
@@ -98,16 +99,20 @@ export const InputText = styled.input<ICommonProps & IFieldWithIcon>`
   right: 0;
   width: 100%;
   padding-top: 15px;
-  text-indent: ${props => (props.hasLeading ? 42 : 12)}px;
+  text-indent: ${(props) => (props.hasLeading ? 42 : 12)}px;
   height: 100%;
   font-size: 16px;
   box-shadow: none;
   border: none;
   z-index: 1;
   background: transparent;
-  color: ${props => (isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)")};
+  color: ${(props) =>
+    isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)"};
   &:focus {
     outline: 0;
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 
@@ -118,12 +123,13 @@ export const TextArea = styled.textarea<ICommonProps & IFieldWithIcon>`
   height: 100%;
   font-size: 16px;
   padding-top: 25px;
-  padding-left: ${props => (props.hasLeading ? 42 : 12)}px;
+  padding-left: ${(props) => (props.hasLeading ? 42 : 12)}px;
   box-shadow: none;
   border: none;
   z-index: 1;
   background: transparent;
-  color: ${props => (isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)")};
+  color: ${(props) =>
+    isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)"};
   &:focus {
     outline: 0;
   }
@@ -136,9 +142,10 @@ export const Icon = styled.i<ICommonProps>`
   height: 24px;
   cursor: pointer;
   z-index: 2;
-  color: ${props => (isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)")};
+  color: ${(props) =>
+    isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)"};
   svg {
-    fill: ${props =>
+    fill: ${(props) =>
       isLight(props) ? "rgb(100,100,100)" : "rgb(200,200,200)"};
   }
 `;
@@ -185,7 +192,7 @@ export const HelperText = styled.small`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: ${props =>
+  color: ${(props) =>
     isLight(props)
       ? "#b00020ff"
       : Color("#b00020ff")

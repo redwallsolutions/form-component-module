@@ -175,6 +175,13 @@ const App: FC = () => {
               field="hidden"
               initialValue={1}
             />
+            <InputField
+              label="Disabled"
+              field="disabled"
+              disabled
+              readOnly
+              initialValue="I'm disabled input."
+            />
 
             <div style={{ width: 100 }}>
               <InputField

@@ -61,6 +61,7 @@ const Field: FC<IFieldElement &
   validate,
   validateOnChange = true,
   required,
+  disabled,
   placeholder,
   isMultiline,
   getRef,
@@ -121,6 +122,7 @@ const Field: FC<IFieldElement &
 
   const fieldProps = {
     ...rest,
+    disabled,
     ref,
     value,
     onFocus: onFocusInner,
@@ -145,6 +147,7 @@ const Field: FC<IFieldElement &
           shouldFitContainer={shouldFitContainer}
           isFocused={isFocused}
           isFilled={isFilled}
+          isDisabled={disabled}
           theme={themeToApply}
           appearance={appearance}
           hasError={error ? true : false}

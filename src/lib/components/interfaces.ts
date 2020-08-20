@@ -14,6 +14,7 @@ export interface IFieldElementInteraction extends ICommonProps {
   isFocused: boolean;
   isFilled: boolean;
   hasError: boolean;
+  isDisabled?: boolean;
 }
 
 export interface IFieldWithIcon {
