@@ -6,6 +6,7 @@ export type MaskType =
   | "percent"
   | "cel"
   | "cpf"
+  | "cnpj"
   | "simpleMonthYear"
   | "cvc"
   | "cep";

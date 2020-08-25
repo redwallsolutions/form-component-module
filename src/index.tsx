@@ -182,6 +182,7 @@ const App: FC = () => {
               readOnly
               initialValue="I'm disabled input."
             />
+            <InputField label="CNPJ" field="cnpj" maskType="cnpj" />
 
             <div style={{ width: 100 }}>
               <InputField

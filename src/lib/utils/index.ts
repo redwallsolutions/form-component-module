@@ -63,6 +63,16 @@ const cpf = (value: any) => {
     .replace(/(-\d{2})\d+?$/, "$1");
 };
 
+const cnpj = (value: any) => {
+  return value
+    .replace(/\D/g, "")
+    .replace(/(\d{2})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1/$2")
+    .replace(/(\d{4})(\d{1,2})/, "$1-$2")
+    .replace(/(-\d{2})\d+?$/, "$1");
+};
+
 const cep = (value: any) => {
   return value
     .replace(/\D/g, "")
@@ -74,6 +84,7 @@ export default {
   percent,
   cel,
   cpf,
+  cnpj,
   default: _default,
   isEmpty,
   simpleMonthYear,
