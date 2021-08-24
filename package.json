@@ -1,9 +1,9 @@
 {
   "name": "@redwallsolutions/form-component-module",
-  "version": "2.9.2",
+  "version": "2.9.3",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "type": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

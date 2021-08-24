@@ -153,6 +153,15 @@ const App: FC = () => {
               initialValue="R$50,00"
             />
             <InputField
+              label="Money required"
+              field="moneywivar"
+              appearance={appearance as IAppearance}
+              maskType="money"
+              initialValue="R$50,00"
+              required
+              validateOnChange
+            />
+            <InputField
               label="Simple Month Year"
               field="simplemonthyear"
               appearance={appearance as IAppearance}
