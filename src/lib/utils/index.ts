@@ -4,7 +4,7 @@ numeral.locale("pt-br");
 numeral.defaultFormat("$0,0.00");
 
 const money = (value: string) => {
-  let newValue: string | number = value.replace(/\D+/g, "").replace(/^0+/, "");
+  let newValue: string | number = value.replace(/\D+/g, "");
   newValue = parseInt(newValue) / 100;
   if (isNaN(newValue)) {
     return "";

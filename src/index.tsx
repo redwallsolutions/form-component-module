@@ -146,6 +146,13 @@ const App: FC = () => {
               maskType="money"
             />
             <InputField
+              label="Money With Initial Value"
+              field="moneywiv"
+              appearance={appearance as IAppearance}
+              maskType="money"
+              initialValue="R$50,00"
+            />
+            <InputField
               label="Simple Month Year"
               field="simplemonthyear"
               appearance={appearance as IAppearance}
@@ -162,6 +169,13 @@ const App: FC = () => {
               field="cep"
               appearance={appearance as IAppearance}
               maskType="cep"
+            />
+            <InputField
+              label="CEP with initial value"
+              field="cepwiv"
+              appearance={appearance as IAppearance}
+              maskType="cep"
+              initialValue="08576-275"
             />
             <InputField
               label="Celular"

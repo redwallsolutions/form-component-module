@@ -116,7 +116,7 @@ const Field: FC<IFieldElement &
   });
   const { setValue, setTouched } = fieldApi;
   let { value, error } = fieldState;
-  value = value ? (value === "🔤" ? "" : value) : initialValue || "";
+  value = value ? (value === "🔤" ? "" : value) : "";
   const isFilled = value && value !== "" ? true : false;
   const isntHidden = type !== "hidden";
 
